@@ -1,0 +1,1687 @@
+2024-08-26 15:10:44,695 - INFO - Start polling
+2024-08-26 15:10:44,837 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:11:32,977 - INFO - Received message from 964635576: /start
+2024-08-26 15:11:32,980 - INFO - Update id=792261028 is not handled. Duration 7 ms by bot id=6235250605
+2024-08-26 15:11:32,980 - ERROR - Cause exception while process update id=792261028 by bot id=6235250605
+ValueError: the greenlet library is required to use this function. No module named 'greenlet'
+Traceback (most recent call last):
+  File "/Users/rejoller/persik_bot/persik_bot/database/db.py", line 21, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/logger/logging_middleware.py", line 8, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/handlers/start_command.py", line 25, in handle_start
+    await user_manager.add_user_if_not_exists(user_data)
+  File "/Users/rejoller/persik_bot/persik_bot/user_manager.py", line 37, in add_user_if_not_exists
+    await self.session.execute(add_user_query)
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/session.py", line 461, in execute
+    result = await greenlet_spawn(
+                   ^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/util/concurrency.py", line 99, in greenlet_spawn
+    _not_implemented()
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/util/concurrency.py", line 79, in _not_implemented
+    raise ValueError(
+ValueError: the greenlet library is required to use this function. No module named 'greenlet'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/database/db.py", line 19, in __call__
+    async with self.session_pool() as session:
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/session.py", line 1080, in __aexit__
+    await asyncio.shield(task)
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/session.py", line 1025, in close
+    await greenlet_spawn(self.sync_session.close)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/util/concurrency.py", line 99, in greenlet_spawn
+    _not_implemented()
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/util/concurrency.py", line 79, in _not_implemented
+    raise ValueError(
+ValueError: the greenlet library is required to use this function. No module named 'greenlet'
+2024-08-26 15:11:49,355 - WARNING - Received SIGINT signal
+2024-08-26 15:11:49,356 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:11:49,357 - INFO - Polling stopped
+2024-08-26 15:11:49,445 - WARNING - Received SIGINT signal
+2024-08-26 15:12:16,369 - INFO - Start polling
+2024-08-26 15:12:16,501 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:12:20,109 - INFO - Received message from 964635576: /start
+2024-08-26 15:12:20,129 - INFO - Update id=792261029 is not handled. Duration 21 ms by bot id=6235250605
+2024-08-26 15:12:20,129 - ERROR - Cause exception while process update id=792261029 by bot id=6235250605
+ProgrammingError: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.UndefinedTableError'>: relation "users" does not exist
+[SQL: INSERT INTO users (user_id, first_name, last_name, username, joined_at, is_admin) VALUES ($1::BIGINT, $2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::TIMESTAMP WITHOUT TIME ZONE, $6::BOOLEAN) ON CONFLICT DO NOTHING]
+[parameters: (964635576, 'Влад', 'Казаков', 'rejoller', datetime.datetime(2024, 8, 26, 15, 12, 20, 110876), True)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 514, in _prepare_and_execute
+    prepared_stmt, attributes = await adapt_connection._prepare(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 760, in _prepare
+    prepared_stmt = await self._connection.prepare(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/asyncpg/connection.py", line 636, in prepare
+    return await self._prepare(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/asyncpg/connection.py", line 654, in _prepare
+    stmt = await self._get_statement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/asyncpg/connection.py", line 433, in _get_statement
+    statement = await self._protocol.prepare(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "asyncpg/protocol/protocol.pyx", line 166, in prepare
+asyncpg.exceptions.UndefinedTableError: relation "users" does not exist
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 572, in execute
+    self._adapt_connection.await_(
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 550, in _prepare_and_execute
+    self._handle_exception(error)
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 501, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 784, in _handle_exception
+    raise translated_error from error
+sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_dbapi.ProgrammingError: <class 'asyncpg.exceptions.UndefinedTableError'>: relation "users" does not exist
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/database/db.py", line 21, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/logger/logging_middleware.py", line 8, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/handlers/start_command.py", line 25, in handle_start
+    await user_manager.add_user_if_not_exists(user_data)
+  File "/Users/rejoller/persik_bot/persik_bot/user_manager.py", line 37, in add_user_if_not_exists
+    await self.session.execute(add_user_query)
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/session.py", line 461, in execute
+    result = await greenlet_spawn(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2247, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/orm/bulk_persistence.py", line 1305, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 572, in execute
+    self._adapt_connection.await_(
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 550, in _prepare_and_execute
+    self._handle_exception(error)
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 501, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 784, in _handle_exception
+    raise translated_error from error
+sqlalchemy.exc.ProgrammingError: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.UndefinedTableError'>: relation "users" does not exist
+[SQL: INSERT INTO users (user_id, first_name, last_name, username, joined_at, is_admin) VALUES ($1::BIGINT, $2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::TIMESTAMP WITHOUT TIME ZONE, $6::BOOLEAN) ON CONFLICT DO NOTHING]
+[parameters: (964635576, 'Влад', 'Казаков', 'rejoller', datetime.datetime(2024, 8, 26, 15, 12, 20, 110876), True)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-08-26 15:12:25,160 - INFO - Received message from 964635576: /start
+2024-08-26 15:12:25,170 - INFO - Update id=792261030 is not handled. Duration 16 ms by bot id=6235250605
+2024-08-26 15:12:25,171 - ERROR - Cause exception while process update id=792261030 by bot id=6235250605
+ProgrammingError: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.UndefinedTableError'>: relation "users" does not exist
+[SQL: INSERT INTO users (user_id, first_name, last_name, username, joined_at, is_admin) VALUES ($1::BIGINT, $2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::TIMESTAMP WITHOUT TIME ZONE, $6::BOOLEAN) ON CONFLICT DO NOTHING]
+[parameters: (964635576, 'Влад', 'Казаков', 'rejoller', datetime.datetime(2024, 8, 26, 15, 12, 25, 166025), True)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 514, in _prepare_and_execute
+    prepared_stmt, attributes = await adapt_connection._prepare(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 760, in _prepare
+    prepared_stmt = await self._connection.prepare(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/asyncpg/connection.py", line 636, in prepare
+    return await self._prepare(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/asyncpg/connection.py", line 654, in _prepare
+    stmt = await self._get_statement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/asyncpg/connection.py", line 433, in _get_statement
+    statement = await self._protocol.prepare(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "asyncpg/protocol/protocol.pyx", line 166, in prepare
+asyncpg.exceptions.UndefinedTableError: relation "users" does not exist
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 572, in execute
+    self._adapt_connection.await_(
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 550, in _prepare_and_execute
+    self._handle_exception(error)
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 501, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 784, in _handle_exception
+    raise translated_error from error
+sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_dbapi.ProgrammingError: <class 'asyncpg.exceptions.UndefinedTableError'>: relation "users" does not exist
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/database/db.py", line 21, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/logger/logging_middleware.py", line 8, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/handlers/start_command.py", line 25, in handle_start
+    await user_manager.add_user_if_not_exists(user_data)
+  File "/Users/rejoller/persik_bot/persik_bot/user_manager.py", line 37, in add_user_if_not_exists
+    await self.session.execute(add_user_query)
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/session.py", line 461, in execute
+    result = await greenlet_spawn(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2247, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/orm/bulk_persistence.py", line 1305, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 572, in execute
+    self._adapt_connection.await_(
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 550, in _prepare_and_execute
+    self._handle_exception(error)
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 501, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 784, in _handle_exception
+    raise translated_error from error
+sqlalchemy.exc.ProgrammingError: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.UndefinedTableError'>: relation "users" does not exist
+[SQL: INSERT INTO users (user_id, first_name, last_name, username, joined_at, is_admin) VALUES ($1::BIGINT, $2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::TIMESTAMP WITHOUT TIME ZONE, $6::BOOLEAN) ON CONFLICT DO NOTHING]
+[parameters: (964635576, 'Влад', 'Казаков', 'rejoller', datetime.datetime(2024, 8, 26, 15, 12, 25, 166025), True)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-08-26 15:15:10,432 - WARNING - Received SIGINT signal
+2024-08-26 15:15:10,433 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:15:10,433 - INFO - Polling stopped
+2024-08-26 15:15:14,443 - INFO - Start polling
+2024-08-26 15:15:14,573 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:15:21,768 - INFO - Received message from 964635576: /start
+2024-08-26 15:15:22,279 - INFO - Update id=792261031 is handled. Duration 513 ms by bot id=6235250605
+2024-08-26 15:15:31,541 - INFO - Update id=792261032 is not handled. Duration 8 ms by bot id=6235250605
+2024-08-26 15:15:31,541 - ERROR - Cause exception while process update id=792261032 by bot id=6235250605
+TypeError: AsyncSession.execute() missing 1 required positional argument: 'statement'
+Traceback (most recent call last):
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/database/db.py", line 21, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 113, in trigger
+    result, data = await handler.check(event, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 94, in check
+    check = await event_filter.call(*args, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/filters/admins.py", line 25, in __call__
+    ADMINS_LIST = await get_admins_list(AsyncSession)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/filters/admins.py", line 12, in get_admins_list
+    result = await session.execute(subscribers_query)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: AsyncSession.execute() missing 1 required positional argument: 'statement'
+2024-08-26 15:18:39,032 - INFO - Update id=792261033 is not handled. Duration 2 ms by bot id=6235250605
+2024-08-26 15:19:15,184 - INFO - Update id=792261034 is not handled. Duration 11 ms by bot id=6235250605
+2024-08-26 15:19:15,184 - ERROR - Cause exception while process update id=792261034 by bot id=6235250605
+TypeError: AsyncSession.execute() missing 1 required positional argument: 'statement'
+Traceback (most recent call last):
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/database/db.py", line 21, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 113, in trigger
+    result, data = await handler.check(event, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 94, in check
+    check = await event_filter.call(*args, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/filters/admins.py", line 25, in __call__
+    ADMINS_LIST = await get_admins_list(AsyncSession)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/filters/admins.py", line 12, in get_admins_list
+    result = await session.execute(subscribers_query)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: AsyncSession.execute() missing 1 required positional argument: 'statement'
+2024-08-26 15:19:59,148 - WARNING - Received SIGINT signal
+2024-08-26 15:19:59,150 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:19:59,150 - INFO - Polling stopped
+2024-08-26 15:20:25,064 - INFO - Start polling
+2024-08-26 15:20:25,190 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:28:23,361 - INFO - Start polling
+2024-08-26 15:28:23,548 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:28:51,565 - INFO - Update id=792261036 is not handled. Duration 7 ms by bot id=6235250605
+2024-08-26 15:28:51,566 - ERROR - Cause exception while process update id=792261036 by bot id=6235250605
+TypeError: AsyncSession.execute() missing 1 required positional argument: 'statement'
+Traceback (most recent call last):
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/database/db.py", line 21, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 113, in trigger
+    result, data = await handler.check(event, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 94, in check
+    check = await event_filter.call(*args, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/filters/admins.py", line 26, in __call__
+    ADMINS_LIST = await get_admins_list(AsyncSession)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/filters/admins.py", line 13, in get_admins_list
+    result = await session.execute(subscribers_query)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: AsyncSession.execute() missing 1 required positional argument: 'statement'
+2024-08-26 15:31:02,427 - WARNING - Received SIGINT signal
+2024-08-26 15:31:02,429 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:31:02,429 - INFO - Polling stopped
+2024-08-26 15:31:05,283 - INFO - Start polling
+2024-08-26 15:31:05,393 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:31:14,515 - INFO - Update id=792261037 is not handled. Duration 5 ms by bot id=6235250605
+2024-08-26 15:32:51,975 - WARNING - Received SIGINT signal
+2024-08-26 15:32:51,977 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:32:51,977 - INFO - Polling stopped
+2024-08-26 15:32:55,701 - INFO - Start polling
+2024-08-26 15:32:55,809 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:33:17,749 - INFO - Update id=792261038 is not handled. Duration 15 ms by bot id=6235250605
+2024-08-26 15:34:05,878 - WARNING - Received SIGINT signal
+2024-08-26 15:34:05,878 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:34:05,879 - INFO - Polling stopped
+2024-08-26 15:34:17,199 - INFO - Start polling
+2024-08-26 15:34:18,111 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:34:41,431 - INFO - Update id=792261039 is not handled. Duration 29 ms by bot id=6235250605
+2024-08-26 15:35:20,691 - INFO - Start polling
+2024-08-26 15:35:20,934 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:35:29,029 - INFO - Update id=792261040 is not handled. Duration 12 ms by bot id=6235250605
+2024-08-26 15:37:26,828 - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2024-08-26 15:37:26,831 - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 6235250605)
+2024-08-26 15:37:37,428 - WARNING - Received SIGINT signal
+2024-08-26 15:37:37,431 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:37:37,431 - INFO - Polling stopped
+2024-08-26 15:37:50,929 - INFO - Start polling
+2024-08-26 15:37:51,188 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:38:10,362 - INFO - Update id=792261041 is not handled. Duration 28 ms by bot id=6235250605
+2024-08-26 15:38:53,919 - WARNING - Received SIGINT signal
+2024-08-26 15:38:53,920 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:38:53,920 - INFO - Polling stopped
+2024-08-26 15:39:04,526 - INFO - Start polling
+2024-08-26 15:39:04,674 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:39:11,201 - INFO - Update id=792261042 is not handled. Duration 11 ms by bot id=6235250605
+2024-08-26 15:39:38,266 - WARNING - Received SIGINT signal
+2024-08-26 15:39:38,268 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:39:38,268 - INFO - Polling stopped
+2024-08-26 15:39:52,239 - INFO - Start polling
+2024-08-26 15:39:52,371 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:39:59,152 - INFO - Received message from 964635576: None
+2024-08-26 15:42:06,994 - INFO - Start polling
+2024-08-26 15:42:07,117 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:42:15,182 - INFO - Received message from 964635576: None
+2024-08-26 15:42:15,836 - INFO - Update id=792261044 is not handled. Duration 660 ms by bot id=6235250605
+2024-08-26 15:42:15,836 - ERROR - Cause exception while process update id=792261044 by bot id=6235250605
+TypeError: Message.answer_animation() missing 1 required positional argument: 'animation'
+Traceback (most recent call last):
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/database/db.py", line 21, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/logger/logging_middleware.py", line 8, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/handlers/badwords_file_handler.py", line 28, in documents_handler
+    await message.answer_animation(caption='Файл загружен')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Message.answer_animation() missing 1 required positional argument: 'animation'
+2024-08-26 15:42:35,668 - WARNING - Received SIGINT signal
+2024-08-26 15:42:35,669 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:42:35,670 - INFO - Polling stopped
+2024-08-26 15:42:39,457 - INFO - Start polling
+2024-08-26 15:42:39,576 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:42:44,735 - INFO - Received message from 964635576: None
+2024-08-26 15:42:45,218 - INFO - Update id=792261045 is not handled. Duration 490 ms by bot id=6235250605
+2024-08-26 15:42:45,219 - ERROR - Cause exception while process update id=792261045 by bot id=6235250605
+TypeError: Message.answer_animation() missing 1 required positional argument: 'animation'
+Traceback (most recent call last):
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/database/db.py", line 21, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/logger/logging_middleware.py", line 8, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/handlers/badwords_file_handler.py", line 28, in documents_handler
+    await message.answer_animation(caption='Файл загружен')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Message.answer_animation() missing 1 required positional argument: 'animation'
+2024-08-26 15:43:16,684 - WARNING - Received SIGINT signal
+2024-08-26 15:43:16,687 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:43:16,687 - INFO - Polling stopped
+2024-08-26 15:43:19,165 - INFO - Start polling
+2024-08-26 15:43:19,276 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:43:23,030 - INFO - Received message from 964635576: None
+2024-08-26 15:43:23,674 - INFO - Update id=792261046 is handled. Duration 653 ms by bot id=6235250605
+2024-08-26 15:44:00,473 - WARNING - Received SIGINT signal
+2024-08-26 15:44:00,475 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:44:00,475 - INFO - Polling stopped
+2024-08-26 15:44:03,459 - INFO - Start polling
+2024-08-26 15:44:03,578 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:44:08,112 - INFO - Received message from 964635576: None
+2024-08-26 15:44:08,578 - INFO - Update id=792261047 is not handled. Duration 473 ms by bot id=6235250605
+2024-08-26 15:44:08,578 - ERROR - Cause exception while process update id=792261047 by bot id=6235250605
+FileNotFoundError: [Errno 2] No such file or directory: 'destination'
+Traceback (most recent call last):
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/database/db.py", line 21, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/logger/logging_middleware.py", line 8, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/handlers/badwords_file_handler.py", line 26, in documents_handler
+    df = pd.read_excel('destination')
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/pandas/io/excel/_base.py", line 495, in read_excel
+    io = ExcelFile(
+         ^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/pandas/io/excel/_base.py", line 1550, in __init__
+    ext = inspect_excel_format(
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/pandas/io/excel/_base.py", line 1402, in inspect_excel_format
+    with get_handle(
+         ^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/pandas/io/common.py", line 882, in get_handle
+    handle = open(handle, ioargs.mode)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'destination'
+2024-08-26 15:44:28,957 - WARNING - Received SIGINT signal
+2024-08-26 15:44:28,958 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:44:28,958 - INFO - Polling stopped
+2024-08-26 15:44:33,603 - INFO - Start polling
+2024-08-26 15:44:33,712 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:44:37,531 - INFO - Received message from 964635576: None
+2024-08-26 15:44:38,108 - INFO - Update id=792261048 is not handled. Duration 583 ms by bot id=6235250605
+2024-08-26 15:44:38,108 - ERROR - Cause exception while process update id=792261048 by bot id=6235250605
+FileNotFoundError: [Errno 2] No such file or directory: 'destination'
+Traceback (most recent call last):
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/database/db.py", line 21, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/logger/logging_middleware.py", line 8, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/handlers/badwords_file_handler.py", line 26, in documents_handler
+    df = pd.read_excel('destination')
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/pandas/io/excel/_base.py", line 495, in read_excel
+    io = ExcelFile(
+         ^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/pandas/io/excel/_base.py", line 1550, in __init__
+    ext = inspect_excel_format(
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/pandas/io/excel/_base.py", line 1402, in inspect_excel_format
+    with get_handle(
+         ^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/pandas/io/common.py", line 882, in get_handle
+    handle = open(handle, ioargs.mode)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'destination'
+2024-08-26 15:45:51,525 - WARNING - Received SIGINT signal
+2024-08-26 15:45:51,526 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:45:51,527 - INFO - Polling stopped
+2024-08-26 15:46:00,734 - INFO - Start polling
+2024-08-26 15:46:00,848 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:46:08,205 - INFO - Received message from 964635576: None
+2024-08-26 15:46:08,748 - INFO - Update id=792261049 is not handled. Duration 551 ms by bot id=6235250605
+2024-08-26 15:46:08,748 - ERROR - Cause exception while process update id=792261049 by bot id=6235250605
+FileNotFoundError: [Errno 2] No such file or directory: 'destination'
+Traceback (most recent call last):
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/database/db.py", line 21, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/logger/logging_middleware.py", line 8, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/handlers/badwords_file_handler.py", line 26, in documents_handler
+    df = pd.read_excel('destination')
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/pandas/io/excel/_base.py", line 495, in read_excel
+    io = ExcelFile(
+         ^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/pandas/io/excel/_base.py", line 1550, in __init__
+    ext = inspect_excel_format(
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/pandas/io/excel/_base.py", line 1402, in inspect_excel_format
+    with get_handle(
+         ^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/pandas/io/common.py", line 882, in get_handle
+    handle = open(handle, ioargs.mode)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'destination'
+2024-08-26 15:46:25,283 - WARNING - Received SIGINT signal
+2024-08-26 15:46:25,284 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:46:25,284 - INFO - Polling stopped
+2024-08-26 15:46:27,786 - INFO - Start polling
+2024-08-26 15:46:27,896 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:46:31,763 - INFO - Received message from 964635576: None
+2024-08-26 15:46:32,327 - INFO - Update id=792261050 is not handled. Duration 571 ms by bot id=6235250605
+2024-08-26 15:46:32,328 - ERROR - Cause exception while process update id=792261050 by bot id=6235250605
+ImportError: Missing optional dependency 'openpyxl'.  Use pip or conda to install openpyxl.
+Traceback (most recent call last):
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/pandas/compat/_optional.py", line 135, in import_optional_dependency
+    module = importlib.import_module(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'openpyxl'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/database/db.py", line 21, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/logger/logging_middleware.py", line 8, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/handlers/badwords_file_handler.py", line 26, in documents_handler
+    df = pd.read_excel(destination)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/pandas/io/excel/_base.py", line 495, in read_excel
+    io = ExcelFile(
+         ^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/pandas/io/excel/_base.py", line 1567, in __init__
+    self._reader = self._engines[engine](
+                   ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/pandas/io/excel/_openpyxl.py", line 552, in __init__
+    import_optional_dependency("openpyxl")
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/pandas/compat/_optional.py", line 138, in import_optional_dependency
+    raise ImportError(msg)
+ImportError: Missing optional dependency 'openpyxl'.  Use pip or conda to install openpyxl.
+2024-08-26 15:46:51,811 - WARNING - Received SIGINT signal
+2024-08-26 15:46:51,813 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:46:51,813 - INFO - Polling stopped
+2024-08-26 15:47:08,484 - INFO - Start polling
+2024-08-26 15:47:08,591 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 15:47:11,815 - INFO - Received message from 964635576: None
+2024-08-26 15:47:12,745 - INFO - Update id=792261051 is handled. Duration 936 ms by bot id=6235250605
+2024-08-26 16:04:27,967 - WARNING - Received SIGINT signal
+2024-08-26 16:04:27,970 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 16:04:27,970 - INFO - Polling stopped
+2024-08-26 16:04:35,649 - INFO - Start polling
+2024-08-26 16:04:35,755 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 16:04:55,415 - INFO - Received message from 964635576: None
+2024-08-26 16:04:55,832 - INFO - Update id=792261052 is handled. Duration 431 ms by bot id=6235250605
+2024-08-26 16:05:31,954 - INFO - Received message from 964635576: None
+2024-08-26 16:05:33,693 - INFO - Update id=792261053 is handled. Duration 1744 ms by bot id=6235250605
+2024-08-26 16:31:59,278 - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2024-08-26 16:31:59,279 - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 6235250605)
+2024-08-26 16:32:04,531 - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2024-08-26 16:32:04,531 - WARNING - Sleep for 1.288087 seconds and try again... (tryings = 1, bot id = 6235250605)
+2024-08-26 16:32:10,502 - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2024-08-26 16:32:10,502 - WARNING - Sleep for 1.723759 seconds and try again... (tryings = 2, bot id = 6235250605)
+2024-08-26 16:32:16,942 - INFO - Connection established (tryings = 3, bot id = 6235250605)
+2024-08-26 16:32:16,952 - INFO - Received message from 964635576: /start
+2024-08-26 16:32:17,377 - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2024-08-26 16:32:17,377 - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 6235250605)
+2024-08-26 16:32:17,569 - INFO - Update id=792261054 is handled. Duration 625 ms by bot id=6235250605
+2024-08-26 16:32:24,134 - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2024-08-26 16:32:24,135 - WARNING - Sleep for 1.281393 seconds and try again... (tryings = 1, bot id = 6235250605)
+2024-08-26 16:32:31,320 - WARNING - Received SIGINT signal
+2024-08-26 16:32:31,323 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-26 16:32:31,323 - INFO - Polling stopped
+2024-08-26 16:32:34,788 - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x122185040>
+2024-08-27 16:34:02,736 - INFO - Start polling
+2024-08-27 16:34:02,853 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 16:34:55,082 - INFO - Received message from 964635576: None
+2024-08-27 16:34:56,302 - INFO - Update id=792261082 is handled. Duration 1238 ms by bot id=6235250605
+2024-08-27 16:36:10,813 - WARNING - Received SIGINT signal
+2024-08-27 16:36:10,815 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 16:36:10,815 - INFO - Polling stopped
+2024-08-27 16:36:13,680 - INFO - Start polling
+2024-08-27 16:36:13,790 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 16:36:22,647 - INFO - Received message from 964635576: None
+2024-08-27 16:36:23,657 - INFO - Update id=792261083 is handled. Duration 1014 ms by bot id=6235250605
+2024-08-27 16:37:25,302 - WARNING - Received SIGINT signal
+2024-08-27 16:37:25,304 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 16:37:25,304 - INFO - Polling stopped
+2024-08-27 16:37:27,901 - INFO - Start polling
+2024-08-27 16:37:28,014 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 16:37:34,747 - INFO - Received message from 964635576: None
+2024-08-27 16:37:36,677 - INFO - Update id=792261084 is handled. Duration 1936 ms by bot id=6235250605
+2024-08-27 16:45:14,123 - INFO - Received message from 964635576: None
+2024-08-27 16:45:15,444 - INFO - Update id=792261085 is handled. Duration 1348 ms by bot id=6235250605
+2024-08-27 16:47:29,254 - WARNING - Received SIGINT signal
+2024-08-27 16:47:29,256 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 16:47:29,257 - INFO - Polling stopped
+2024-08-27 16:47:41,537 - INFO - Start polling
+2024-08-27 16:47:41,651 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 16:47:56,345 - INFO - Received message from 964635576: None
+2024-08-27 16:47:57,367 - INFO - Update id=792261086 is not handled. Duration 1040 ms by bot id=6235250605
+2024-08-27 16:47:57,367 - ERROR - Cause exception while process update id=792261086 by bot id=6235250605
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/database/db.py", line 21, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/logger/logging_middleware.py", line 8, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/handlers/badwords_file_handler.py", line 34, in documents_handler
+    for i, row in df:
+        ^^^^^^
+ValueError: too many values to unpack (expected 2)
+2024-08-27 16:48:34,284 - WARNING - Received SIGINT signal
+2024-08-27 16:48:34,287 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 16:48:34,287 - INFO - Polling stopped
+2024-08-27 16:49:42,586 - INFO - Start polling
+2024-08-27 16:49:42,698 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 16:49:46,524 - INFO - Received message from 964635576: None
+2024-08-27 16:49:48,190 - INFO - Update id=792261087 is handled. Duration 1671 ms by bot id=6235250605
+2024-08-27 17:02:03,149 - WARNING - Received SIGINT signal
+2024-08-27 17:02:03,153 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:02:03,153 - INFO - Polling stopped
+2024-08-27 17:03:31,729 - INFO - Start polling
+2024-08-27 17:03:31,907 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:03:55,814 - INFO - Update id=792261088 is not handled. Duration 4 ms by bot id=6235250605
+2024-08-27 17:04:13,138 - INFO - Update id=792261089 is not handled. Duration 3 ms by bot id=6235250605
+2024-08-27 17:04:42,215 - WARNING - Received SIGINT signal
+2024-08-27 17:04:42,216 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:04:42,216 - INFO - Polling stopped
+2024-08-27 17:04:44,926 - INFO - Start polling
+2024-08-27 17:04:45,031 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:04:53,291 - INFO - Update id=792261090 is not handled. Duration 2 ms by bot id=6235250605
+2024-08-27 17:05:01,870 - INFO - Update id=792261091 is not handled. Duration 2 ms by bot id=6235250605
+2024-08-27 17:05:19,613 - WARNING - Received SIGINT signal
+2024-08-27 17:05:19,615 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:05:19,616 - INFO - Polling stopped
+2024-08-27 17:05:22,147 - INFO - Start polling
+2024-08-27 17:05:22,258 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:05:35,534 - INFO - Update id=792261092 is not handled. Duration 6 ms by bot id=6235250605
+2024-08-27 17:06:27,026 - WARNING - Received SIGINT signal
+2024-08-27 17:06:27,029 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:06:27,029 - INFO - Polling stopped
+2024-08-27 17:06:30,350 - INFO - Start polling
+2024-08-27 17:06:30,495 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:06:37,102 - INFO - Update id=792261093 is not handled. Duration 13 ms by bot id=6235250605
+2024-08-27 17:07:50,002 - INFO - Received message from 964635576: /start
+2024-08-27 17:07:50,471 - INFO - Update id=792261094 is handled. Duration 471 ms by bot id=6235250605
+2024-08-27 17:08:49,064 - WARNING - Received SIGINT signal
+2024-08-27 17:08:49,066 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:08:49,066 - INFO - Polling stopped
+2024-08-27 17:09:39,183 - INFO - Start polling
+2024-08-27 17:09:39,298 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:09:43,875 - INFO - Received message from 964635576: /start
+2024-08-27 17:09:44,555 - INFO - Update id=792261095 is handled. Duration 682 ms by bot id=6235250605
+2024-08-27 17:09:50,260 - INFO - Received message from 964635576: бдун
+2024-08-27 17:09:50,552 - INFO - Update id=792261096 is handled. Duration 293 ms by bot id=6235250605
+2024-08-27 17:10:31,036 - WARNING - Received SIGINT signal
+2024-08-27 17:10:31,038 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:10:31,039 - INFO - Polling stopped
+2024-08-27 17:10:33,860 - INFO - Start polling
+2024-08-27 17:10:34,026 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:10:43,400 - INFO - Received message from 964635576: бдун
+2024-08-27 17:10:43,458 - INFO - Update id=792261097 is handled. Duration 60 ms by bot id=6235250605
+2024-08-27 17:11:44,490 - WARNING - Received SIGINT signal
+2024-08-27 17:11:44,493 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:11:44,493 - INFO - Polling stopped
+2024-08-27 17:11:47,223 - INFO - Start polling
+2024-08-27 17:11:47,357 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:12:05,618 - INFO - Received message from 964635576: Бдун
+2024-08-27 17:12:06,031 - INFO - Update id=792261098 is handled. Duration 417 ms by bot id=6235250605
+2024-08-27 17:12:11,701 - INFO - Received message from 964635576: бдун
+2024-08-27 17:12:11,915 - INFO - Update id=792261099 is handled. Duration 215 ms by bot id=6235250605
+2024-08-27 17:12:33,475 - INFO - Received message from 964635576: «бдун»
+2024-08-27 17:12:34,035 - INFO - Update id=792261100 is handled. Duration 561 ms by bot id=6235250605
+2024-08-27 17:12:53,799 - WARNING - Received SIGINT signal
+2024-08-27 17:12:53,802 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:12:53,802 - INFO - Polling stopped
+2024-08-27 17:12:56,441 - INFO - Start polling
+2024-08-27 17:12:56,622 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:13:05,931 - INFO - Received message from 964635576: бдун
+2024-08-27 17:13:06,334 - INFO - Update id=792261101 is handled. Duration 405 ms by bot id=6235250605
+2024-08-27 17:13:32,675 - WARNING - Received SIGINT signal
+2024-08-27 17:13:32,677 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:13:32,678 - INFO - Polling stopped
+2024-08-27 17:13:35,134 - INFO - Start polling
+2024-08-27 17:13:35,243 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:13:40,749 - INFO - Received message from 964635576: бдун
+2024-08-27 17:13:41,188 - INFO - Update id=792261102 is handled. Duration 441 ms by bot id=6235250605
+2024-08-27 17:14:25,372 - INFO - Received message from 964635576: армячок
+2024-08-27 17:14:25,889 - INFO - Update id=792261103 is handled. Duration 518 ms by bot id=6235250605
+2024-08-27 17:16:12,807 - WARNING - Received SIGINT signal
+2024-08-27 17:16:12,809 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:16:12,809 - INFO - Polling stopped
+2024-08-27 17:16:16,951 - INFO - Start polling
+2024-08-27 17:16:17,085 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:16:27,699 - INFO - Received message from 964635576: армячок
+2024-08-27 17:16:28,126 - INFO - Update id=792261104 is handled. Duration 429 ms by bot id=6235250605
+2024-08-27 17:20:42,622 - WARNING - Received SIGINT signal
+2024-08-27 17:20:42,625 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:20:42,625 - INFO - Polling stopped
+2024-08-27 17:21:04,600 - INFO - Start polling
+2024-08-27 17:21:04,712 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:21:11,139 - INFO - Received message from 964635576: армячок
+2024-08-27 17:21:11,780 - INFO - Update id=792261105 is handled. Duration 643 ms by bot id=6235250605
+2024-08-27 17:21:17,436 - INFO - Received message from 964635576: Смппааа
+2024-08-27 17:21:17,667 - INFO - Update id=792261106 is handled. Duration 232 ms by bot id=6235250605
+2024-08-27 17:21:29,421 - INFO - Received message from 964635576: Бля
+2024-08-27 17:21:29,722 - INFO - Update id=792261107 is handled. Duration 302 ms by bot id=6235250605
+2024-08-27 17:40:42,189 - WARNING - Received SIGINT signal
+2024-08-27 17:40:42,191 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:40:42,191 - INFO - Polling stopped
+2024-08-27 17:40:56,213 - INFO - Start polling
+2024-08-27 17:40:56,329 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:41:11,817 - INFO - Received message from 964635576: None
+2024-08-27 17:41:12,256 - INFO - Update id=792261108 is handled. Duration 448 ms by bot id=6235250605
+2024-08-27 17:41:49,641 - WARNING - Received SIGINT signal
+2024-08-27 17:41:49,643 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:41:49,643 - INFO - Polling stopped
+2024-08-27 17:41:52,114 - INFO - Start polling
+2024-08-27 17:41:52,231 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:42:00,655 - INFO - Received message from 964635576: None
+2024-08-27 17:42:01,758 - INFO - Update id=792261109 is not handled. Duration 1109 ms by bot id=6235250605
+2024-08-27 17:42:01,758 - ERROR - Cause exception while process update id=792261109 by bot id=6235250605
+AttributeError: type object 'Badphrases' has no attribute 'delete'
+Traceback (most recent call last):
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/database/db.py", line 21, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/logger/logging_middleware.py", line 8, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/handlers/badwords_file_handler.py", line 38, in documents_handler
+    dele = Badphrases.delete()
+           ^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Badphrases' has no attribute 'delete'
+2024-08-27 17:43:53,997 - WARNING - Received SIGINT signal
+2024-08-27 17:43:53,998 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:43:53,998 - INFO - Polling stopped
+2024-08-27 17:43:57,193 - INFO - Start polling
+2024-08-27 17:43:57,323 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:44:04,758 - INFO - Received message from 964635576: None
+2024-08-27 17:44:06,371 - INFO - Update id=792261110 is not handled. Duration 1628 ms by bot id=6235250605
+2024-08-27 17:44:06,371 - ERROR - Cause exception while process update id=792261110 by bot id=6235250605
+TypeError: 'AsyncEngine' object is not callable
+Traceback (most recent call last):
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/database/db.py", line 21, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/logger/logging_middleware.py", line 8, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/rejoller/persik_bot/persik_bot/handlers/badwords_file_handler.py", line 39, in documents_handler
+    await engine(dele)
+          ^^^^^^^^^^^^
+TypeError: 'AsyncEngine' object is not callable
+2024-08-27 17:44:58,462 - WARNING - Received SIGINT signal
+2024-08-27 17:44:58,462 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:44:58,462 - INFO - Polling stopped
+2024-08-27 17:45:00,950 - INFO - Start polling
+2024-08-27 17:45:01,136 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:45:09,423 - INFO - Received message from 964635576: None
+2024-08-27 17:45:11,243 - INFO - Update id=792261111 is handled. Duration 1827 ms by bot id=6235250605
+2024-08-27 17:46:01,807 - WARNING - Received SIGINT signal
+2024-08-27 17:46:01,808 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:46:01,808 - INFO - Polling stopped
+2024-08-27 17:46:05,915 - INFO - Start polling
+2024-08-27 17:46:06,025 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:46:11,288 - INFO - Received message from 964635576: None
+2024-08-27 17:46:12,375 - INFO - Update id=792261112 is handled. Duration 1092 ms by bot id=6235250605
+2024-08-27 17:47:02,656 - WARNING - Received SIGINT signal
+2024-08-27 17:47:02,657 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:47:02,657 - INFO - Polling stopped
+2024-08-27 17:47:05,063 - INFO - Start polling
+2024-08-27 17:47:05,173 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:47:09,931 - INFO - Received message from 964635576: None
+2024-08-27 17:47:11,127 - INFO - Update id=792261113 is handled. Duration 1202 ms by bot id=6235250605
+2024-08-27 17:49:00,133 - WARNING - Received SIGINT signal
+2024-08-27 17:49:00,133 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:49:00,134 - INFO - Polling stopped
+2024-08-27 17:49:03,235 - INFO - Start polling
+2024-08-27 17:49:03,421 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:49:13,080 - INFO - Received message from 964635576: None
+2024-08-27 17:49:15,612 - INFO - Update id=792261114 is handled. Duration 2540 ms by bot id=6235250605
+2024-08-27 17:49:50,497 - INFO - Update id=792261115 is not handled. Duration 9 ms by bot id=6235250605
+2024-08-27 17:54:00,068 - INFO - Received message from 964635576: /start
+2024-08-27 17:54:00,470 - INFO - Update id=792261116 is handled. Duration 405 ms by bot id=6235250605
+2024-08-27 17:54:03,587 - INFO - Update id=792261117 is not handled. Duration 1 ms by bot id=6235250605
+2024-08-27 17:54:08,551 - INFO - Update id=792261118 is not handled. Duration 1 ms by bot id=6235250605
+2024-08-27 17:54:33,960 - WARNING - Received SIGINT signal
+2024-08-27 17:54:33,961 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:54:33,961 - INFO - Polling stopped
+2024-08-27 17:54:36,755 - INFO - Start polling
+2024-08-27 17:54:36,866 - INFO - Run polling for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:54:44,558 - INFO - Received message from 964635576: /start
+2024-08-27 17:54:46,167 - INFO - Update id=792261119 is handled. Duration 1611 ms by bot id=6235250605
+2024-08-27 17:55:03,170 - INFO - Received message from 964635576: армячок
+2024-08-27 17:55:03,729 - INFO - Update id=792261120 is handled. Duration 559 ms by bot id=6235250605
+2024-08-27 17:56:06,847 - INFO - Received message from 964635576: None
+2024-08-27 17:56:07,359 - INFO - Update id=792261121 is handled. Duration 513 ms by bot id=6235250605
+2024-08-27 17:58:18,692 - WARNING - Received SIGINT signal
+2024-08-27 17:58:18,693 - INFO - Polling stopped for bot @MCR_Expert_bot id=6235250605 - 'MCR_test'
+2024-08-27 17:58:18,693 - INFO - Polling stopped

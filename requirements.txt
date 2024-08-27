@@ -1,0 +1,11 @@
+aiogram
+pandas
+sqlalchemy
+icecream
+glob2
+redis
+asyncpg
+APScheduler
+psycopg2-binary
+greenlet
+openpyxl
