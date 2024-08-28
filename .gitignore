@@ -1,3 +1,8 @@
 .venv/
 config.py
 *.ipynb
+logger/__pycache__/
+filters/__pycache__/
+*/__pycache__/*
+bot.log
+.DS_Store/
