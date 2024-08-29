@@ -9,3 +9,4 @@ APScheduler
 psycopg2-binary
 greenlet
 openpyxl
+python-Levenshtein

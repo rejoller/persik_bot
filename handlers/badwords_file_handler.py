@@ -2,10 +2,8 @@ import logging
 from aiogram import F, Router, types, Bot
 import os
 import pandas as pd
-import random
 from icecream import ic
 
-from database.engine import engine
 from database.models import Badphrases
 from filters.admins import AdminFilter
 
@@ -52,6 +50,8 @@ async def documents_handler(message: types.Message, session: AsyncSession, bot: 
             logging.error(
                 f"Ошибка базы данных при сохранении фразы: {db_err}"
             )
+        
+        os.remove(destination)
             
             
         

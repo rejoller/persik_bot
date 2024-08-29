@@ -5,9 +5,11 @@ from aiogram import Bot, Dispatcher
 from aiogram.fsm.storage.redis import RedisStorage
 from logger.logging_config import setup_logging
 from logger.logging_middleware import LoggingMiddleware
-from config import BOT_TOKEN
+from config import BOT_TOKEN, PYRO_API_ID, PYRO_API_HASH
 import asyncio
-
+from database.engine import session_maker
+# from utils.autochecker import badwords_autochecker
+from pyrogram import Client
 
 bot = Bot(BOT_TOKEN)
 
@@ -15,10 +17,18 @@ storage = RedisStorage.from_url("redis://localhost:6379/7")
 
 
 
+# async def scheduled_autochecker():
+#     async with session_maker() as session:
+#         await badwords_autochecker(session)
+
 
 
 async def main():
+    async with Client("my_account", PYRO_API_ID, PYRO_API_HASH) as app:
+        await app.send_message("me", "Greetings from **Pyrogram**!")
     setup_logging()
+    import nltk
+    nltk.download('punkt_tab')
     dp = Dispatcher(storage = storage)
     
     from database.engine import session_maker
@@ -29,9 +39,11 @@ async def main():
     
     dp.message.middleware(LoggingMiddleware())
     from database.engine import create_db
+    # await drop_db()
     await create_db()
 
     print('Бот запущен и готов к приему сообщений')
+    # await scheduled_autochecker()
 
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types(), skip_updates=True)

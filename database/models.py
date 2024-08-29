@@ -24,6 +24,16 @@ class Badphrases(Base):
     phrase_id: Mapped[int] = mapped_column(BIGINT, primary_key=True, autoincrement=True)
     phrase_text: Mapped[str] = mapped_column(String)
     
+    
+    
+    
+class Messages(Base):
+    __tablename__ = 'messages'
+    message_id: Mapped[int] = mapped_column(BIGINT, primary_key=True, autoincrement=True)
+    message_tg_id: Mapped[int] = mapped_column(BIGINT)
+    date_send: Mapped[DateTime] = mapped_column(TIMESTAMP)
+    message_text: Mapped[bool] = mapped_column(String, nullable=True)
+    
 
 
 
