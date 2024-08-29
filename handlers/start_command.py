@@ -10,6 +10,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 
 from user_manager import UserManager
+from kb.start import markup
 
 
 
@@ -24,4 +25,4 @@ async def handle_start(message: Message, state: FSMContext, session: AsyncSessio
     user_data = user_manager.extract_user_data_from_message(message)
     await user_manager.add_user_if_not_exists(user_data)
 
-    await message.answer('тестстсистмам')
+    await message.answer('Добро пожаловать в бота!', reply_markup=markup)
