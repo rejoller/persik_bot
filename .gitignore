@@ -8,5 +8,6 @@ bot.log
 .DS_Store/*.pyc
 *.pgsql
 my_account.session
-bot.log
-bot.log
+my_account.session-journal
+*.pgsql
+*.pyc
