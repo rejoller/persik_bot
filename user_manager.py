@@ -3,7 +3,7 @@ from sqlalchemy.dialects.postgresql import insert
 from database.models import Messages, Users
 from aiogram import types
 from datetime import datetime as dt
-from config import ADMINS
+
 
 class UserManager:
     def __init__(self, session: AsyncSession):
@@ -32,7 +32,7 @@ class UserManager:
             last_name=user_data['last_name'],
             username=user_data['username'],
             joined_at=dt.now(),
-            is_admin=True if user_data['user_id'] in ADMINS else False
+            is_admin=False
         ).on_conflict_do_nothing()
         await self.session.execute(add_user_query)
         await self.session.commit()

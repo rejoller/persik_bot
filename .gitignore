@@ -5,4 +5,8 @@ logger/__pycache__/
 filters/__pycache__/
 */__pycache__/*
 bot.log
-.DS_Store/
+.DS_Store/*.pyc
+*.pgsql
+my_account.session
+bot.log
+bot.log

@@ -45,7 +45,8 @@ async def run_aiogram():
     dp.include_router(router)
     
     dp.message.middleware(LoggingMiddleware())
-    from database.engine import create_db
+    from database.engine import create_db, drop_db
+    # await drop_db()
     await create_db()
 
     print('Бот запущен и готов к приему сообщений')

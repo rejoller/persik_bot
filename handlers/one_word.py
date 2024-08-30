@@ -6,7 +6,7 @@ from aiogram.filters import StateFilter
 from aiogram.fsm.context import FSMContext
 
 from database.models import Badphrases
-from filters.admins import AdminFilter
+from filters.admins import AdminFilter, CallbackQueryAdminFilter
 from states import Form
 
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -21,7 +21,6 @@ router = Router()
 
 @router.message(StateFilter(Form.one_word))
 async def one_word_handler(message: Message, session: AsyncSession, state: FSMContext):
-    print('one_word_handler')
     try:          
         save_query = insert(Badphrases).values(phrase_text = message.text)
         await session.execute(save_query)

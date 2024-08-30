@@ -6,7 +6,7 @@ import pandas as pd
 from icecream import ic
 
 from database.models import Badphrases
-from filters.admins import AdminFilter
+from filters.admins import AdminFilter, CallbackQueryAdminFilter
 from states import Form
 
 from sqlalchemy.ext.asyncio import AsyncSession
