@@ -23,6 +23,7 @@ class Badphrases(Base):
     __tablename__ = 'badphrases'
     phrase_id: Mapped[int] = mapped_column(BIGINT, primary_key=True, autoincrement=True)
     phrase_text: Mapped[str] = mapped_column(String)
+    unicoded_phrase_text: Mapped[str] = mapped_column(String, nullable=True)
     
     
     

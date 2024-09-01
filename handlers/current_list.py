@@ -1,3 +1,4 @@
+import os
 from aiogram import Router, F
 from aiogram.types import Message, FSInputFile
 from aiogram.fsm.context import FSMContext
@@ -30,9 +31,12 @@ async def handle_currentlist(message: Message, state: FSMContext, session: Async
     df = pd.DataFrame(result)
     
     current_list = df['phrase_text']
+    directory = 'saved_data'
     filename = 'текущий_список.xlsx'
     
-    writer = pd.ExcelWriter(filename, engine='xlsxwriter')
+    destination = os.join(os.getcwd(), directory, filename)
+    
+    writer = pd.ExcelWriter(destination, engine='xlsxwriter')
     
     df.to_excel(writer, index=False, sheet_name='список')
     

@@ -1,7 +1,6 @@
 from aiogram import Router, F, types
 from aiogram.fsm.context import FSMContext
 from filters.admins import CallbackQueryAdminFilter
-from icecream import ic
 from states import Form
 
 router = Router()

@@ -12,3 +12,4 @@ openpyxl
 python-Levenshtein
 xlsxwriter
 nltk
+unidecode

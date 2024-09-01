@@ -1,6 +1,10 @@
 import logging
+import os
 
 def setup_logging():
+    directory = "bot_log"
+    if not os.path.exists(directory):
+        os.makedirs(directory)
     file_handler = logging.FileHandler("bot_log/bot.log")
     file_handler.setLevel(logging.INFO)
     file_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))

@@ -1,13 +1,14 @@
 import logging
 
 from aiogram.types import Message
-from aiogram import Router, F
+from aiogram import Router
 from aiogram.filters import StateFilter
 from aiogram.fsm.context import FSMContext
 
 from database.models import Badphrases
-from filters.admins import AdminFilter, CallbackQueryAdminFilter
 from states import Form
+
+from utils.unidecoder import unidecoder
 
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.dialects.postgresql import insert
@@ -22,7 +23,8 @@ router = Router()
 @router.message(StateFilter(Form.one_word))
 async def one_word_handler(message: Message, session: AsyncSession, state: FSMContext):
     try:          
-        save_query = insert(Badphrases).values(phrase_text = message.text)
+        unicoded_phrase_text = unidecoder(message.text)
+        save_query = insert(Badphrases).values(phrase_text = message.text, unicoded_phrase_text = unicoded_phrase_text)
         await session.execute(save_query)
         await session.commit()
         await message.answer('Новая фраза загружена в базу данных')
