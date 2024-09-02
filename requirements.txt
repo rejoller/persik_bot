@@ -13,3 +13,5 @@ python-Levenshtein
 xlsxwriter
 nltk
 unidecode
+fuzzywuzzy
+pyrogram

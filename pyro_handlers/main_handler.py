@@ -1,12 +1,18 @@
 import logging
-import unidecode
-from config import CHAT_ID_MODERATORS, INTERVAL_MIN, PYRO_API_HASH, PYRO_API_ID, TARGET_CHANNEL_ID, TARGET_CHAT_ID
+from config import (
+    CHAT_ID_MODERATORS,
+    INTERVAL_MIN,
+    PYRO_API_HASH,
+    PYRO_API_ID,
+    TARGET_CHANNEL_ID,
+    TARGET_CHAT_ID,
+)
 from database.models import Badphrases
 from database.engine import session_maker
 from sqlalchemy import select
 
 
-from datetime import datetime as dt
+from datetime import datetime as dt, timedelta
 import pandas as pd
 from utils.unidecoder import unidecoder
 from nltk.tokenize import word_tokenize
@@ -41,32 +47,41 @@ async def find_similar_words(search_value, words_list, threshold=70):
 
 async def badwords_autochecker(app, bad_words=None, unidecoded_bad_words=None):
     async for message in app.get_chat_history(chat_id=TARGET_CHAT_ID, limit=10):
-
         await asyncio.sleep(1)
 
+        message_text = message.text.lower() if message.text else ""
+        message_caption = message.caption.lower() if message.caption else ""
 
-        if message.text and any(word in message.text for word in bad_words) or message.caption and any(word in message.caption for word in bad_words):
-            print("точно мат")
+        if any(word in message_text.split() for word in bad_words) or any(word in message_caption.split() for word in bad_words):
+            found_words = [word for word in bad_words if word in message_text.split() or word in message_caption.split()]
+            print(f"Найден мат: {', '.join(found_words)}")
+            
             await app.send_message(
                 chat_id=CHAT_ID_MODERATORS,
-                text=f"Найден мат❗️\nhttps://t.me/c/{TARGET_CHANNEL_ID}/{message.id}",
+                text=f"Найден мат❗️\nhttps://t.me/c/{TARGET_CHANNEL_ID}/{message.id}\n{', '.join(found_words)}",
             )
             await message.forward(chat_id=CHAT_ID_MODERATORS)
             try:
                 await message.delete()
+                # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
             except Exception as e:
                 logging.error(f"Ошибка при удалении сообщения: {e}")
             return
+
+        decoded_message_text = [unidecoder(word) for word in message_text.split()]
+        decoded_message_caption = [unidecoder(word) for word in message_caption.split()]
+
+        if any(word in decoded_message_text for word in unidecoded_bad_words) or any(word in decoded_message_caption for word in unidecoded_bad_words):
+            found_words = [word for word in unidecoded_bad_words if word in decoded_message_text or word in decoded_message_caption]
+            print(f"Найден мат с помощью юнидекодера: {', '.join(found_words)}")
         
-        if message.text and any(word in unidecoder(message.text) for word in unidecoded_bad_words) or message.caption and any(word in unidecoder(message.caption) for word in unidecoded_bad_words):
-            unidecoder(message.text)
-            print("найден мат с помощью юнидекодера")
             await app.send_message(
                 chat_id=CHAT_ID_MODERATORS,
-                text=f"Найден мат с помощью юнидекодера❗️\nhttps://t.me/c/{TARGET_CHANNEL_ID}/{message.id}",
+                text=f"Найден мат с помощью юнидекодера❗️\nhttps://t.me/c/{TARGET_CHANNEL_ID}/{message.id}\n{', '.join(found_words)}",
             )
             await message.forward(chat_id=CHAT_ID_MODERATORS)
             try:
+                # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
                 await message.delete()
             except Exception as e:
                 logging.error(f"Ошибка при удалении сообщения: {e}")
@@ -81,12 +96,13 @@ async def check_message_for_bad_words(message_words, bad_words, threshold=70):
     return False
 
 
-
-
-
 async def pyro_main_handler(app, message):
+    ic(message.from_user.id)
+    ic(message.text)
     async with session_maker() as session:
-        check_word_query = select(Badphrases.phrase_text, Badphrases.unicoded_phrase_text)
+        check_word_query = select(
+            Badphrases.phrase_text, Badphrases.unicoded_phrase_text
+        )
         result = await session.execute(check_word_query)
     result = result.all()
 
@@ -94,15 +110,38 @@ async def pyro_main_handler(app, message):
 
     bad_words = []
     unidecoded_bad_words = []
+    
     for i, row in df.iterrows():
         bad_words.append(row["phrase_text"])
         unidecoded_bad_words.append(row["unicoded_phrase_text"])
 
-    if message.text and any(word in message.text for word in bad_words) or message.caption and any(word in message.caption for word in bad_words):
-        print("точно мат")
+    message_text = message.text.lower() if message.text else ""
+    message_caption = message.caption.lower() if message.caption else ""
+
+    if any(word in message_text.split() for word in bad_words) or any(word in message_caption.split() for word in bad_words):
+        found_words = [word for word in bad_words if word in message_text.split() or word in message_caption.split()]
+        print(f"Найден мат: {', '.join(found_words)}")
         await app.send_message(
             chat_id=CHAT_ID_MODERATORS,
-            text=f"Найден мат❗️\nhttps://t.me/c/{TARGET_CHANNEL_ID}/{message.id}",
+            text=f"Найден мат❗️\nhttps://t.me/c/{TARGET_CHANNEL_ID}/{message.id}\n{', '.join(found_words)}",
+        )
+        await message.forward(chat_id=CHAT_ID_MODERATORS)
+        try:
+            # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
+            await message.delete()
+        except Exception as e:
+            logging.error(f"Ошибка при удалении сообщения: {e}")
+        return
+
+    decoded_message_text = [unidecoder(word) for word in message_text.split()]
+    decoded_message_caption = [unidecoder(word) for word in message_caption.split()]
+
+    if any(word in decoded_message_text for word in unidecoded_bad_words) or any(word in decoded_message_caption for word in unidecoded_bad_words):
+        found_words = [word for word in unidecoded_bad_words if word in decoded_message_text or word in decoded_message_caption]
+        print(f"Найден мат с помощью юнидекодера: {', '.join(found_words)}")
+        await app.send_message(
+            chat_id=CHAT_ID_MODERATORS,
+            text=f"Найден мат с помощью юнидекодера❗️\nhttps://t.me/c/{TARGET_CHANNEL_ID}/{message.id}\n{', '.join(found_words)}",
         )
         await message.forward(chat_id=CHAT_ID_MODERATORS)
         try:
@@ -110,35 +149,18 @@ async def pyro_main_handler(app, message):
         except Exception as e:
             logging.error(f"Ошибка при удалении сообщения: {e}")
         return
-    
-    if message.text and any(word in unidecoder(message.text) for word in unidecoded_bad_words) or message.caption and any(word in unidecoder(message.caption) for word in unidecoded_bad_words):
-        unidecoder(message.text)
-        print("найден мат с помощью юнидекодера")
-        await app.send_message(
-            chat_id=CHAT_ID_MODERATORS,
-            text=f"Найден мат с помощью юнидекодера❗️\nhttps://t.me/c/{TARGET_CHANNEL_ID}/{message.id}",
-        )
-        await message.forward(chat_id=CHAT_ID_MODERATORS)
-        try:
-            await message.delete()
-        except Exception as e:
-            logging.error(f"Ошибка при удалении сообщения: {e}")
-        return
-
-        
-
-   
 
 
 async def run_pyrogram():
-    # app = Client("my_account", PYRO_API_ID, PYRO_API_HASH)
     app = Client("my_account", PYRO_API_ID, PYRO_API_HASH)
     await app.start()
 
     print("пиро работает")
 
     async with session_maker() as session:
-        check_word_query = select(Badphrases.phrase_text, Badphrases.unicoded_phrase_text)
+        check_word_query = select(
+            Badphrases.phrase_text, Badphrases.unicoded_phrase_text
+        )
         result = await session.execute(check_word_query)
         result = result.all()
         df = pd.DataFrame(result)
@@ -156,7 +178,8 @@ async def run_pyrogram():
             scheduled_badwords_autochecker, "interval", minutes=INTERVAL_MIN
         )
         scheduler.start()
-        # await badwords_autochecker(app, bad_words)
     # my_handler = MessageHandler(pyro_main_handler, filters.chat([964635576]))
-    my_handler = MessageHandler(pyro_main_handler, filters.chat([TARGET_CHAT_ID, CHAT_ID_MODERATORS]))
+    my_handler = MessageHandler(
+        pyro_main_handler, filters.chat([TARGET_CHAT_ID, CHAT_ID_MODERATORS])
+    )
     app.add_handler(my_handler)
