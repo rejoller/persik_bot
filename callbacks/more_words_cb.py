@@ -9,5 +9,5 @@ router = Router()
 @router.callback_query(F.data == "more_words", CallbackQueryAdminFilter())
 async def handle_more_words(query: types.CallbackQuery, state: FSMContext):
     print('more_words_handler')
-    await query.message.answer('отправьте файл со списком слов(фраз) c названием "список.xlsx".\nТаблица должна содержать только один столбец с названием "words"')
+    await query.message.answer('отправьте файл со списком слов(фраз) c названием "список.xlsx".\nТаблица должна содержать только один столбец с названием "мат"')
     await state.set_state(Form.more_words)
