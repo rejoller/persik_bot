@@ -6,7 +6,7 @@
 
 
 host = "localhost"
-user = "rejoller"
+user = "rejoller_2"
 port = 5432
 database = "persik"
 password = "9205"

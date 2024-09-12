@@ -31,10 +31,11 @@ async def handle_currentlist(message: Message, state: FSMContext, session: Async
     df = pd.DataFrame(result)
     
     current_list = df['phrase_text']
-    directory = 'saved_data'
-    filename = 'текущий_список.xlsx'
+   # directory = 'saved_data'
+   # filename = 'текущий_список.xlsx'
     
-    destination = os.join(os.getcwd(), directory, filename)
+   # destination = os.join(os.getcwd(), directory, filename)
+    destination = 'saved_data/текущий_список.xlsx'
     
     writer = pd.ExcelWriter(destination, engine='xlsxwriter')
     
