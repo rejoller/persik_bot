@@ -31,7 +31,7 @@ async def documents_handler(message: types.Message, session: AsyncSession, bot: 
         file_info = await bot.get_file(document.file_id)
         await bot.download_file(file_info.file_path, destination)
 
-        df = pd.read_excel(destination)
+        df = pd.read_excel(destination, names=['мат'])
 
         await message.answer(
             "Файл загружен на сервер, пробую загрузить в базу данных🧐"
