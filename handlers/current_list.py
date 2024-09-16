@@ -29,13 +29,11 @@ async def handle_currentlist(message: Message, state: FSMContext, session: Async
     result = result.all()
     
     df = pd.DataFrame(result)
+    directory = 'saved_data'
+    filename = 'текущий_список.xlsx'
     
-    current_list = df['phrase_text']
-   # directory = 'saved_data'
-   # filename = 'текущий_список.xlsx'
-    
-   # destination = os.join(os.getcwd(), directory, filename)
-    destination = 'saved_data/текущий_список.xlsx'
+    destination = os.path.join(os.getcwd(), directory, filename)
+   # destination = 'saved_data/текущий_список.xlsx'
     
     writer = pd.ExcelWriter(destination, engine='xlsxwriter')
     
@@ -49,6 +47,6 @@ async def handle_currentlist(message: Message, state: FSMContext, session: Async
     writer.close()
 
     try:
-        await message.answer_document(document=FSInputFile('текущий_список.xlsx'), caption=f'Текущий список\n{len(df)} матов')
+        await message.answer_document(document=FSInputFile(destination), caption=f'Текущий список\n{len(df)} матов')
     except Exception as e:
         await message.answer(f'Ошибка при отправке файла{e}')

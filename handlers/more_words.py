@@ -25,6 +25,7 @@ async def documents_handler(message: types.Message, session: AsyncSession, bot: 
     file_name = document.file_name.lower()
     if "список" in file_name:
         directory = "saved_data"
+        file_name = 'текущий_список.xlsx'
         if not os.path.exists(directory):
             os.mkdir(directory)
         destination = os.path.join(os.getcwd(), directory, file_name)
@@ -52,7 +53,7 @@ async def documents_handler(message: types.Message, session: AsyncSession, bot: 
         except SQLAlchemyError as db_err:
             logging.error(f"Ошибка базы данных при сохранении фразы: {db_err}")
 
-        os.remove(destination)
+        
 
     if "список" not in file_name:
         await message.answer("Имя файла не подходит для сохранения")

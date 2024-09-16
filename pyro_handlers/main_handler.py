@@ -48,9 +48,19 @@ async def find_similar_words(search_value, words_list, threshold=70):
 async def badwords_autochecker(app, bad_words=None, unidecoded_bad_words=None):
     async for message in app.get_chat_history(chat_id=TARGET_CHAT_ID, limit=10):
         await asyncio.sleep(1)
-
+	
         message_text = message.text.lower() if message.text else ""
         message_caption = message.caption.lower() if message.caption else ""
+        if message.animation:
+            await app.send_message(
+                chat_id=CHAT_ID_MODERATORS,
+                text=f"обнаружена анимация",)
+            await message.forward(chat_id=CHAT_ID_MODERATORS)
+            try:
+                await message.delete()
+            except Exception as e:
+                logging.error(f"Ошибка при удалении сообщения с анимацие: {e}")
+            return  
 
         if any(word in message_text.split() for word in bad_words) or any(word in message_caption.split() for word in bad_words):
             found_words = [word for word in bad_words if word in message_text.split() or word in message_caption.split()]
@@ -58,7 +68,7 @@ async def badwords_autochecker(app, bad_words=None, unidecoded_bad_words=None):
             
             await app.send_message(
                 chat_id=CHAT_ID_MODERATORS,
-                text=f"Найден мат❗️\nhttps://t.me/c/{TARGET_CHANNEL_ID}/{message.id}\n{', '.join(found_words)}",
+                text=f"Найден мат\n{', '.join(found_words)}",
             )
             await message.forward(chat_id=CHAT_ID_MODERATORS)
             try:
@@ -73,11 +83,10 @@ async def badwords_autochecker(app, bad_words=None, unidecoded_bad_words=None):
 
         if any(word in decoded_message_text for word in unidecoded_bad_words) or any(word in decoded_message_caption for word in unidecoded_bad_words):
             found_words = [word for word in unidecoded_bad_words if word in decoded_message_text or word in decoded_message_caption]
-            print(f"Найден мат с помощью юнидекодера: {', '.join(found_words)}")
         
             await app.send_message(
                 chat_id=CHAT_ID_MODERATORS,
-                text=f"Найден мат с помощью юнидекодера❗️\nhttps://t.me/c/{TARGET_CHANNEL_ID}/{message.id}\n{', '.join(found_words)}",
+                text=f"Найден мат с помощью юнидекодера\n{', '.join(found_words)}",
             )
             await message.forward(chat_id=CHAT_ID_MODERATORS)
             try:
@@ -97,8 +106,6 @@ async def check_message_for_bad_words(message_words, bad_words, threshold=70):
 
 
 async def pyro_main_handler(app, message):
-    ic(message.from_user.id)
-    ic(message.text)
     async with session_maker() as session:
         check_word_query = select(
             Badphrases.phrase_text, Badphrases.unicoded_phrase_text
@@ -117,13 +124,23 @@ async def pyro_main_handler(app, message):
 
     message_text = message.text.lower() if message.text else ""
     message_caption = message.caption.lower() if message.caption else ""
-
-    if any(word in message_text.split() for word in bad_words) or any(word in message_caption.split() for word in bad_words):
-        found_words = [word for word in bad_words if word in message_text.split() or word in message_caption.split()]
-        print(f"Найден мат: {', '.join(found_words)}")
+    if message.animation:
         await app.send_message(
             chat_id=CHAT_ID_MODERATORS,
-            text=f"Найден мат❗️\nhttps://t.me/c/{TARGET_CHANNEL_ID}/{message.id}\n{', '.join(found_words)}",
+            text=f"обнаружена анимация",
+        )
+        await message.forward(chat_id=CHAT_ID_MODERATORS)
+
+        try:
+            await message.delete()
+        except Exception as e:
+            logging.error(f"Ошибка при удалении сообщения с анимацие: {e}")
+        return
+    if any(word in message_text.split() for word in bad_words) or any(word in message_caption.split() for word in bad_words):
+        found_words = [word for word in bad_words if word in message_text.split() or word in message_caption.split()]
+        await app.send_message(
+            chat_id=CHAT_ID_MODERATORS,
+            text=f"Найден мат\n{', '.join(found_words)}",
         )
         await message.forward(chat_id=CHAT_ID_MODERATORS)
         try:
@@ -138,10 +155,9 @@ async def pyro_main_handler(app, message):
 
     if any(word in decoded_message_text for word in unidecoded_bad_words) or any(word in decoded_message_caption for word in unidecoded_bad_words):
         found_words = [word for word in unidecoded_bad_words if word in decoded_message_text or word in decoded_message_caption]
-        print(f"Найден мат с помощью юнидекодера: {', '.join(found_words)}")
         await app.send_message(
             chat_id=CHAT_ID_MODERATORS,
-            text=f"Найден мат с помощью юнидекодера❗️\nhttps://t.me/c/{TARGET_CHANNEL_ID}/{message.id}\n{', '.join(found_words)}",
+            text=f"Найден мат с помощью юнидекодера\n{', '.join(found_words)}",
         )
         await message.forward(chat_id=CHAT_ID_MODERATORS)
         try:
