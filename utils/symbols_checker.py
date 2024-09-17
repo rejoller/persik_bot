@@ -11,7 +11,7 @@ transport= r'\U0001f680-\U0001f6a8'
 map_signs=r'\U0001f6a9-\U0001f6c5'
 signs_etc=r'\U0001F30D-\U0001F567'
 
-some_addons=r'\u2116' #2116 это №
+some_addons=r'\u2116\u000a\u000d' #2116 это № 0xa 0xd - символ табуляции - символ новой строки
 
 # сборка нужного из того
 pattern=r'[^'+nums+signs+letters_en+letters_cyr+emoticons+dingbats+transport+map_signs+signs_etc+some_addons+']'
