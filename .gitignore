@@ -15,6 +15,7 @@ __pycache__/
 handlers/__pycache__/
 pyro_handlers/__pycache__/
 utils/__pycache__/
-Dockerfile
-saved_data/
-database/db_config.py
+*.JPG
+*.png
+*.PNG
+*.jpg
