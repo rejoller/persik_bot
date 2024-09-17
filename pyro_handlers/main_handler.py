@@ -57,14 +57,14 @@ async def badwords_autochecker(app, bad_words=None, unidecoded_bad_words=None):
                 await app.send_message(
                 chat_id=CHAT_ID_MODERATORS,
                 text=f"обнаружен спам",
-            )
-            await message.forward(chat_id=CHAT_ID_MODERATORS)
+                )
+                await message.forward(chat_id=CHAT_ID_MODERATORS)
 
-            # try:
-            #     await message.delete()
-            # except Exception as e:
-            #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
-            return
+                # try:
+                #     await message.delete()
+                # except Exception as e:
+                #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
+                return
                 
             
         message_caption = message.caption.lower() if message.caption else ""
@@ -73,15 +73,14 @@ async def badwords_autochecker(app, bad_words=None, unidecoded_bad_words=None):
             if spam_check == 1:
                 await app.send_message(
                 chat_id=CHAT_ID_MODERATORS,
-                text=f"обнаружен спам",
-            )
-            await message.forward(chat_id=CHAT_ID_MODERATORS)
+                text=f"обнаружен спам",)
+                await message.forward(chat_id=CHAT_ID_MODERATORS)
 
-            # try:
-            #     await message.delete()
-            # except Exception as e:
-            #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
-            return
+                # try:
+                #     await message.delete()
+                # except Exception as e:
+                #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
+                return
         
         
         if message.animation:
@@ -162,14 +161,14 @@ async def pyro_main_handler(app, message):
             await app.send_message(
             chat_id=CHAT_ID_MODERATORS,
             text=f"обнаружен спам",
-        )
-        await message.forward(chat_id=CHAT_ID_MODERATORS)
+            )
+            await message.forward(chat_id=CHAT_ID_MODERATORS)
 
-        # try:
-        #     await message.delete()
-        # except Exception as e:
-        #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
-        return
+            # try:
+            #     await message.delete()
+            # except Exception as e:
+            #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
+            return
             
         
     message_caption = message.caption.lower() if message.caption else ""
@@ -177,16 +176,16 @@ async def pyro_main_handler(app, message):
         spam_check = predict(message_caption)
         if spam_check == 1:
             await app.send_message(
-            chat_id=CHAT_ID_MODERATORS,
-            text=f"обнаружен спам",
-        )
-        await message.forward(chat_id=CHAT_ID_MODERATORS)
+                chat_id=CHAT_ID_MODERATORS,
+                text=f"обнаружен спам",
+                )
+            await message.forward(chat_id=CHAT_ID_MODERATORS)
 
-        # try:
-        #     await message.delete()
-        # except Exception as e:
-        #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
-        return
+            # try:
+            #     await message.delete()
+            # except Exception as e:
+            #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
+            return
     
     
     
@@ -203,7 +202,7 @@ async def pyro_main_handler(app, message):
             logging.error(f"Ошибка при удалении сообщения с анимацие: {e}")
         return
     
-    spam_check = predict(message_text)
+   
     if any(word in message_text.split() for word in bad_words) or any(word in message_caption.split() for word in bad_words):
         found_words = [word for word in bad_words if word in message_text.split() or word in message_caption.split()]
         await app.send_message(
