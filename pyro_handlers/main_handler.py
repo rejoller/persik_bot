@@ -71,7 +71,7 @@ async def badwords_autochecker(app, bad_words=None, unidecoded_bad_words=None):
             if symbol_check:
                 await app.send_message(
                 chat_id=CHAT_ID_MODERATORS,
-                text=f"обнаружен спам алгоритмом Игоря 😎",
+                text=f"обнаружен спам алгоритмом Игоря 😎 \nсимвол: {symbol_check.group(0)}, код символа: {hex(ord(symbol_check.group(0)))} ",
                 )
                 await message.forward(chat_id=CHAT_ID_MODERATORS)
 
@@ -102,7 +102,7 @@ async def badwords_autochecker(app, bad_words=None, unidecoded_bad_words=None):
             if symbol_check:
                 await app.send_message(
                 chat_id=CHAT_ID_MODERATORS,
-                text=f"обнаружен спам алгоритмом Игоря 😎",
+                text=f"обнаружен спам алгоритмом Игоря 😎 \nсимвол: {symbol_check.group(0)}, код символа: {hex(ord(symbol_check.group(0)))} ",
                 )
                 await message.forward(chat_id=CHAT_ID_MODERATORS)
 
@@ -204,7 +204,7 @@ async def pyro_main_handler(app, message):
         if symbol_check:
             await app.send_message(
             chat_id=CHAT_ID_MODERATORS,
-            text=f"обнаружен спам алгоритмом Игоря 😎",
+            text=f"обнаружен спам алгоритмом Игоря 😎 \nсимвол: {symbol_check.group(0)}, код символа: {hex(ord(symbol_check.group(0)))} ",
             )
             await message.forward(chat_id=CHAT_ID_MODERATORS)
 
@@ -237,7 +237,7 @@ async def pyro_main_handler(app, message):
         if symbol_check:
             await app.send_message(
             chat_id=CHAT_ID_MODERATORS,
-            text=f"обнаружен спам алгоритмом Игоря 😎",
+            text=f"обнаружен спам алгоритмом Игоря 😎 \nсимвол: {symbol_check.group(0)}, код символа: {hex(ord(symbol_check.group(0)))} ",
             )
             await message.forward(chat_id=CHAT_ID_MODERATORS)
 

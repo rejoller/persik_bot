@@ -11,7 +11,10 @@ transport= r'\U0001f680-\U0001f6a8'
 map_signs=r'\U0001f6a9-\U0001f6c5'
 signs_etc=r'\U0001F30D-\U0001F567'
 
-pattern=r'[^'+nums+signs+letters_en+letters_cyr+emoticons+dingbats+transport+map_signs+signs_etc+']'
+some_addons=r'\u2116' #2116 это №
+
+# сборка нужного из того
+pattern=r'[^'+nums+signs+letters_en+letters_cyr+emoticons+dingbats+transport+map_signs+signs_etc+some_addons+']'
 
 
 def match_str(in_str:str):   
