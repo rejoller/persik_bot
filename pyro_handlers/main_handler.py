@@ -18,6 +18,7 @@ from utils.unidecoder import unidecoder
 from nltk.tokenize import word_tokenize
 from utils.spam_checker import predict
 from utils.sanya_spam_checker import sanya_spam_checker
+
 from utils.symbols_checker import match_str
 import re
 import string
@@ -55,8 +56,7 @@ async def badwords_autochecker(app, bad_words=None, unidecoded_bad_words=None):
         message_text = message.text.lower() if message.text else ""
         message_caption = message.caption.lower() if message.caption else ""
         
-        
-        
+    
         if message.animation:
             await app.send_message(
                 chat_id=CHAT_ID_MODERATORS,
@@ -116,21 +116,21 @@ async def badwords_autochecker(app, bad_words=None, unidecoded_bad_words=None):
                 #     await message.delete()
                 # except Exception as e:
                 #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
-                return
+                pass
             
-            symbol_check = match_str(message_text)
-            if symbol_check:
-                await app.send_message(
-                chat_id=CHAT_ID_MODERATORS,
-                text=f"обнаружен спам алгоритмом Игоря 😎 \nсимвол: {symbol_check.group(0)}, код символа: {hex(ord(symbol_check.group(0)))} ",
-                )
-                await message.forward(chat_id=CHAT_ID_MODERATORS)
+            # symbol_check = match_str(message_text)
+            # if symbol_check:
+            #     await app.send_message(
+            #     chat_id=CHAT_ID_MODERATORS,
+            #     text=f"обнаружен спам алгоритмом Игоря 😎 \nсимвол: {symbol_check.group(0)}, код символа: {hex(ord(symbol_check.group(0)))} ",
+            #     )
+            #     await message.forward(chat_id=CHAT_ID_MODERATORS)
 
-                # try:
-                #     await message.delete()
-                # except Exception as e:
-                #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
-                return
+            #     try:
+            #         await message.delete()
+            #     except Exception as e:
+            #         logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
+            #     pass
 
         
         
@@ -147,21 +147,21 @@ async def badwords_autochecker(app, bad_words=None, unidecoded_bad_words=None):
                 #     await message.delete()
                 # except Exception as e:
                 #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
-                return
+                pass
             
-            symbol_check = match_str(message_caption)
-            if symbol_check:
-                await app.send_message(
-                chat_id=CHAT_ID_MODERATORS,
-                text=f"обнаружен спам алгоритмом Игоря 😎 \nсимвол: {symbol_check.group(0)}, код символа: {hex(ord(symbol_check.group(0)))} ",
-                )
-                await message.forward(chat_id=CHAT_ID_MODERATORS)
+            # symbol_check = match_str(message_caption)
+            # if symbol_check:
+            #     await app.send_message(
+            #     chat_id=CHAT_ID_MODERATORS,
+            #     text=f"обнаружен спам алгоритмом Игоря 😎 \nсимвол: {symbol_check.group(0)}, код символа: {hex(ord(symbol_check.group(0)))} ",
+            #     )
+            #     await message.forward(chat_id=CHAT_ID_MODERATORS)
 
-                # try:
-                #     await message.delete()
-                # except Exception as e:
-                #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
-                return
+            #     try:
+            #         await message.delete()
+            #     except Exception as e:
+            #         logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
+            #     return
             
             
             
@@ -192,43 +192,38 @@ async def pyro_main_handler(app, message):
         unidecoded_bad_words.append(row["unicoded_phrase_text"])
 
     message_text = message.text.lower() if message.text else ""
+    message_caption = message.caption.lower() if message.caption else ""
     if message_text:
         spam_check = predict(message_text)
         if spam_check == 1:
             await app.send_message(
-            chat_id=CHAT_ID_MODERATORS,
-            text=f"обнаружен спам",
-        )
-        await message.forward(chat_id=CHAT_ID_MODERATORS)
+                chat_id=CHAT_ID_MODERATORS,
+                text=f"обнаружен спам",
+            )
+            await message.forward(chat_id=CHAT_ID_MODERATORS)
 
-        # try:
-        #     await message.delete()
-        # except Exception as e:
-        #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
-        pass
+            # try:
+            #     await message.delete()
+            # except Exception as e:
+            #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
+            pass
         
-        sanya_spam_check = sanya_spam_checker(message_text):
+        sanya_spam_check = sanya_spam_checker(message_text)
         if sanya_spam_check == 1:
             await app.send_message(
-            chat_id=CHAT_ID_MODERATORS,
-            text=f"обнаружен спам с помощью алгоритма Сани🤠",
-        )
-        await message.forward(chat_id=CHAT_ID_MODERATORS)
+                chat_id=CHAT_ID_MODERATORS,
+                text=f"обнаружен спам с помощью алгоритма Сани🤠",
+            )
+            await message.forward(chat_id=CHAT_ID_MODERATORS)
 
-        # try:
-        #     await message.delete()
-        # except Exception as e:
-        #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
-        return
-    
-
-            
+            # try:
+            #     await message.delete()
+            # except Exception as e:
+            #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
+            pass
         
-    message_caption = message.caption.lower() if message.caption else ""
     
-    
-    
-    
+
     if message.animation:
         await app.send_message(
             chat_id=CHAT_ID_MODERATORS,
@@ -275,33 +270,19 @@ async def pyro_main_handler(app, message):
     
     
     if message_text:
-        spam_check = predict(message_text)
-        if spam_check == 1:
-            await app.send_message(
-            chat_id=CHAT_ID_MODERATORS,
-            text=f"обнаружен спам",
-            )
-            await message.forward(chat_id=CHAT_ID_MODERATORS)
-
-            # try:
-            #     await message.delete()
-            # except Exception as e:
-            #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
-            return
-        
         symbol_check = match_str(message_text)
         if symbol_check:
             await app.send_message(
-            chat_id=CHAT_ID_MODERATORS,
-            text=f"обнаружен спам алгоритмом Игоря 😎 \nсимвол: {symbol_check.group(0)}, код символа: {hex(ord(symbol_check.group(0)))} ",
-            )
+                chat_id=CHAT_ID_MODERATORS,
+                text=f"обнаружен спам алгоритмом Игоря 😎 \nсимвол: {symbol_check.group(0)}, код символа: {hex(ord(symbol_check.group(0)))} ",
+                )
             await message.forward(chat_id=CHAT_ID_MODERATORS)
 
             # try:
             #     await message.delete()
             # except Exception as e:
             #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
-            return
+            pass
         
         
     if message_caption:
@@ -317,15 +298,28 @@ async def pyro_main_handler(app, message):
             #     await message.delete()
             # except Exception as e:
             #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
-            return
+            pass
         
+        sanya_spam_check = sanya_spam_checker(message_caption)
+        if sanya_spam_check == 1:
+            await app.send_message(
+                chat_id=CHAT_ID_MODERATORS,
+                text=f"обнаружен спам с помощью алгоритма Сани🤠",
+            )
+            await message.forward(chat_id=CHAT_ID_MODERATORS)
+
+            # try:
+            #     await message.delete()
+            # except Exception as e:
+            #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
+            pass
         
         symbol_check = match_str(message_caption)
         if symbol_check:
             await app.send_message(
-            chat_id=CHAT_ID_MODERATORS,
-            text=f"обнаружен спам алгоритмом Игоря 😎 \nсимвол: {symbol_check.group(0)}, код символа: {hex(ord(symbol_check.group(0)))} ",
-            )
+                chat_id=CHAT_ID_MODERATORS,
+                text=f"обнаружен спам алгоритмом Игоря 😎 \nсимвол: {symbol_check.group(0)}, код символа: {hex(ord(symbol_check.group(0)))} ",
+                )
             await message.forward(chat_id=CHAT_ID_MODERATORS)
 
             # try:
@@ -340,6 +334,8 @@ async def run_pyrogram():
     await app.start()
 
     print("пиро работает")
+    
+   
 
     async with session_maker() as session:
         check_word_query = select(
