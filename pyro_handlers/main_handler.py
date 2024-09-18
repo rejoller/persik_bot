@@ -17,6 +17,7 @@ import pandas as pd
 from utils.unidecoder import unidecoder
 from nltk.tokenize import word_tokenize
 from utils.spam_checker import predict
+from utils.sanya_spam_checker import sanya_spam_checker
 from utils.symbols_checker import match_str
 import re
 import string
@@ -190,7 +191,38 @@ async def pyro_main_handler(app, message):
         bad_words.append(row["phrase_text"])
         unidecoded_bad_words.append(row["unicoded_phrase_text"])
 
-    message_text = message.text.lower() if message.text else ""        
+    message_text = message.text.lower() if message.text else ""
+    if message_text:
+        spam_check = predict(message_text)
+        if spam_check == 1:
+            await app.send_message(
+            chat_id=CHAT_ID_MODERATORS,
+            text=f"обнаружен спам",
+        )
+        await message.forward(chat_id=CHAT_ID_MODERATORS)
+
+        # try:
+        #     await message.delete()
+        # except Exception as e:
+        #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
+        pass
+        
+        sanya_spam_check = sanya_spam_checker(message_text):
+        if sanya_spam_check == 1:
+            await app.send_message(
+            chat_id=CHAT_ID_MODERATORS,
+            text=f"обнаружен спам с помощью алгоритма Сани🤠",
+        )
+        await message.forward(chat_id=CHAT_ID_MODERATORS)
+
+        # try:
+        #     await message.delete()
+        # except Exception as e:
+        #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
+        return
+    
+
+            
         
     message_caption = message.caption.lower() if message.caption else ""
     
