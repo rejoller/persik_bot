@@ -18,7 +18,7 @@ from utils.unidecoder import unidecoder
 from nltk.tokenize import word_tokenize
 from utils.spam_checker import predict
 from utils.sanya_spam_checker import sanya_spam_checker
-
+from utils.spamcheckerv2 import sanya_spam_checkerv2
 from utils.symbols_checker import match_str
 import re
 import string
@@ -212,7 +212,7 @@ async def pyro_main_handler(app, message):
         if sanya_spam_check == 1:
             await app.send_message(
                 chat_id=CHAT_ID_MODERATORS,
-                text=f"обнаружен спам с помощью алгоритма Сани🤠",
+                text=f"обнаружен спам с помощью алгоритма Сани (деда)🤠",
             )
             await message.forward(chat_id=CHAT_ID_MODERATORS)
 
@@ -221,6 +221,21 @@ async def pyro_main_handler(app, message):
             # except Exception as e:
             #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
             pass
+        
+        sanya_spam_checkv2 = sanya_spam_checkerv2(message_text)
+        if sanya_spam_check == 1:
+            await app.send_message(
+                chat_id=CHAT_ID_MODERATORS,
+                text=f"обнаружен спам с помощью алгоритма Сани от 19.09🤠",
+            )
+            await message.forward(chat_id=CHAT_ID_MODERATORS)
+
+            # try:
+            #     await message.delete()
+            # except Exception as e:
+            #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
+            pass
+        
         
     
 
@@ -313,6 +328,23 @@ async def pyro_main_handler(app, message):
             # except Exception as e:
             #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
             pass
+        
+        
+        sanya_spam_checkv2 = sanya_spam_checkerv2(message_caption)
+        if sanya_spam_check == 1:
+            await app.send_message(
+                chat_id=CHAT_ID_MODERATORS,
+                text=f"обнаружен спам с помощью алгоритма Сани от 19.09🤠",
+            )
+            await message.forward(chat_id=CHAT_ID_MODERATORS)
+
+            # try:
+            #     await message.delete()
+            # except Exception as e:
+            #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
+            pass
+        
+        
         
         symbol_check = match_str(message_caption)
         if symbol_check:

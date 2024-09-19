@@ -18,6 +18,7 @@ from pyro_handlers.main_handler import run_pyrogram
 import pandas as pd
 
 from utils.sanya_spamchecker_loader import train_and_save_model
+from utils.spamcheckerv2.spamchecker_loader import train_and_save_model2
 
 bot = Bot(BOT_TOKEN)
 
@@ -39,6 +40,7 @@ storage = RedisStorage.from_url("redis://localhost:6379/7")
 async def run_aiogram():
     setup_logging()
     train_and_save_model()
+    train_and_save_model2()
     print('модель загружена')
     import nltk
     nltk.download('punkt_tab')
