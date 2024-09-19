@@ -18,7 +18,7 @@ from utils.unidecoder import unidecoder
 from nltk.tokenize import word_tokenize
 from utils.spam_checker import predict
 from utils.sanya_spam_checker import sanya_spam_checker
-from utils.spamcheckerv2 import sanya_spam_checkerv2
+from utils.spamcheckerv2.sanya_spamchecker import sanya_spam_checkerv2
 from utils.symbols_checker import match_str
 import re
 import string
