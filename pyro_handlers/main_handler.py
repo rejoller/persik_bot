@@ -184,7 +184,7 @@ async def pyro_main_handler(app, message):
 
         
         sanya_spam_checkv3 = spamchecker3(message_text)
-        if sanya_spam_check == 1:
+        if sanya_spam_checkv3 == 1:
             await app.send_message(
                 chat_id=CHAT_ID_MODERATORS,
                 text=f"обнаружен спам с помощью алгоритма от 20.09",
@@ -266,8 +266,8 @@ async def pyro_main_handler(app, message):
             #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
             pass
         
-        sanya_spam_checkv3 = spamchecker3(message_text)
-        if sanya_spam_check == 1:
+        sanya_spam_checkv3 = spamchecker3(message_caption)
+        if sanya_spam_checkv3 == 1:
             await app.send_message(
                 chat_id=CHAT_ID_MODERATORS,
                 text=f"обнаружен спам с помощью алгоритма от 20.09",
