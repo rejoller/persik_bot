@@ -38,11 +38,11 @@ def unidecoder(phrase):
 
 def train_and_save_model3():
 
-    spam_df = pd.read_excel('datasets/v3/спам.xlsx', names=['text'])
+    spam_df = pd.read_excel('datasets/v3/спам3.xlsx', names=['text'])
     spam_df.head()
     spam_df.drop_duplicates(subset=['text'], inplace=True)
 
-    no_spam_df = pd.read_excel('datasets/v3/не_спам.xlsx', names=['id', 'text'])
+    no_spam_df = pd.read_excel('datasets/v3/не_спам3.xlsx', names=['id', 'text'])
     no_spam_df = no_spam_df.head(30000)
     no_spam_df.drop(no_spam_df.index[0], inplace=True)
 
