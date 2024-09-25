@@ -18,3 +18,13 @@ pyrogram
 transformers
 torch
 tqdm
+pymorphy3
+pandas
+unidecode
+nltk
+scikit-learn
+icecream
+openpyxl
+matplotlib
+numpy
+spacy

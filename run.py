@@ -19,6 +19,7 @@ import pandas as pd
 
 from utils.sanya_spamchecker_loader import train_and_save_model
 from utils.spamcheckerv3.spamchecker_loader import train_and_save_model3
+from utils.spamcheckerv4.spamchecker_loader import train_and_save_model4
 
 bot = Bot(BOT_TOKEN)
 
@@ -39,8 +40,9 @@ storage = RedisStorage.from_url("redis://localhost:6379/7")
 
 async def run_aiogram():
     setup_logging()
-    train_and_save_model()
+    # train_and_save_model()
     train_and_save_model3()
+    train_and_save_model4()
     print('модель загружена')
     import nltk
     nltk.download('punkt_tab')
