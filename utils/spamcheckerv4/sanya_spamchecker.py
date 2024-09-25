@@ -34,17 +34,18 @@ def predict_phrase_tf(phrase, model):
 
 
 
-models_destination = "models/v4/nb"
-models_destination1 = "models/logreg/v4/lg/"
 
-nb_classifier = joblib.load(os.path.join(models_destination, "naive_bayes_model.pkl"))
-nb_classifier1 = joblib.load(os.path.join(models_destination, "naive_bayes_model1.pkl"))
-
-logreg = joblib.load(os.path.join(models_destination1, "logistic_regression_model.pkl"))
-logreg1 = joblib.load(os.path.join(models_destination1, "logistic_regression_model1.pkl"))
 
 
 def ensemble_predict(phrase):
+    models_destination = "models/v4/nb"
+    models_destination1 = "models/logreg/v4/lg/"
+
+    nb_classifier = joblib.load(os.path.join(models_destination, "naive_bayes_model.pkl"))
+    nb_classifier1 = joblib.load(os.path.join(models_destination, "naive_bayes_model1.pkl"))
+
+    logreg = joblib.load(os.path.join(models_destination1, "logistic_regression_model.pkl"))
+    logreg1 = joblib.load(os.path.join(models_destination1, "logistic_regression_model1.pkl"))
     log_reg_result1 = predict_phrase_tf(phrase, logreg1) 
     bayes_result1 = predict_phrase_tf(phrase, nb_classifier1)  
     log_reg_result = predict_phrase_count_v(phrase, logreg) 
