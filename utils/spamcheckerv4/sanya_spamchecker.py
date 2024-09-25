@@ -4,14 +4,10 @@ import os
 
 
 
-vect_destination = "models/v4/"
-
-tfidf_vectorizer = joblib.load(os.path.join(vect_destination, "tfidf_vectorizer.pkl"))
-count_vectorizer = joblib.load(os.path.join(vect_destination, "count_vectorizer.pkl"))
-
 
 def predict_phrase_count_v(phrase, model):
-
+    vect_destination = "models/v4/"
+    count_vectorizer = joblib.load(os.path.join(vect_destination, "count_vectorizer.pkl"))
     phrase = phrase.lower()
     preprocessed_phrase = preprocess_text(phrase) 
     cleaned_phrase = delete_stopwords(preprocessed_phrase)  
@@ -23,6 +19,9 @@ def predict_phrase_count_v(phrase, model):
 
 
 def predict_phrase_tf(phrase, model):
+    vect_destination = "models/v4/"
+    tfidf_vectorizer = joblib.load(os.path.join(vect_destination, "tfidf_vectorizer.pkl"))
+
     phrase = phrase.lower()
     preprocessed_phrase = preprocess_text(phrase) 
     cleaned_phrase = delete_stopwords(preprocessed_phrase)  
