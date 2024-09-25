@@ -182,7 +182,7 @@ def train_and_save_model4():
         y_pred_logreg1 = logreg1.predict(X_test1)
         
         
-        vect_destination = "models/v4/"
+        vect_destination = "models/v4"
         if not os.path.exists(vect_destination):
             os.makedirs(vect_destination)
         
@@ -197,7 +197,7 @@ def train_and_save_model4():
         joblib.dump(nb_classifier, os.path.join(models_destination, "naive_bayes_model.pkl"))
         joblib.dump(nb_classifier1, os.path.join(models_destination, "naive_bayes_model1.pkl"))
         
-        models_destination1 = "models/logreg/v4/lg/"
+        models_destination1 = "models/v4/lg"
         if not os.path.exists(models_destination1):
             os.makedirs(models_destination1)
         

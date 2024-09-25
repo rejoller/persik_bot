@@ -41,8 +41,8 @@ storage = RedisStorage.from_url("redis://localhost:6379/7")
 async def run_aiogram():
     setup_logging()
     # train_and_save_model()
-    train_and_save_model3()
-    train_and_save_model4()
+    # train_and_save_model3()
+    # train_and_save_model4()
     print('модель загружена')
     import nltk
     nltk.download('punkt_tab')
