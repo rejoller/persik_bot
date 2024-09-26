@@ -33,9 +33,9 @@ from sklearn.linear_model import LogisticRegression
 
 
 
-nltk.download('stopwords')
-nltk.download('wordnet')
-nltk.download('punkt_tab')
+# nltk.download('stopwords')
+# nltk.download('wordnet')
+# nltk.download('punkt_tab')
 
 stop_words = stopwords.words()
 

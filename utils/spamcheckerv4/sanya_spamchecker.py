@@ -2,7 +2,7 @@ from utils.spamcheckerv4.spamchecker_loader import preprocess_text, delete_stopw
 import joblib
 import os
 from utils.spamcheckerv4.spamchecker_loader import vect_destination, models_destination, models_destination1
-
+import logging
 
 
 
@@ -50,6 +50,7 @@ def ensemble_predict(phrase):
     bayes_result = predict_phrase_count_v(phrase, nb_classifier) 
 
     results = [log_reg_result1, bayes_result1, log_reg_result, bayes_result]
+    logging.info(f'результаты проверки фразы {phrase}: {results}')
     
     spam_votes = results.count("Спам")
     

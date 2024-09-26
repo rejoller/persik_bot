@@ -19,3 +19,6 @@ utils/__pycache__/
 *.png
 *.PNG
 *.jpg
+.DS_Store
+*.pkl
+

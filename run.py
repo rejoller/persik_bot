@@ -43,9 +43,9 @@ async def run_aiogram():
     # train_and_save_model()
     # train_and_save_model3()
     # train_and_save_model4()
-    print('модель загружена')
+
     import nltk
-    nltk.download('punkt_tab')
+    # nltk.download('punkt_tab')
     dp = Dispatcher(storage=storage)
     
     dp.update.middleware(DataBaseSession(session_pool=session_maker))
