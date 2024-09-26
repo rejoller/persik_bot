@@ -27,7 +27,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.linear_model import LogisticRegression
-
+from config import VECT_DESTINATION, MODELS_DESTINATION, MODELS_DESTINATION1
 
 
 
@@ -182,27 +182,27 @@ def train_and_save_model4():
         y_pred_logreg1 = logreg1.predict(X_test1)
         
         
-        vect_destination = "models/v4"
-        if not os.path.exists(vect_destination):
-            os.makedirs(vect_destination)
-        
-        
-        joblib.dump(tfidf_vectorizer, os.path.join(vect_destination, "tfidf_vectorizer.pkl"))
-        joblib.dump(count_vectorizer, os.path.join(vect_destination, "count_vectorizer.pkl"))
 
-        models_destination = "models/v4/nb"
-        if not os.path.exists(models_destination):
-            os.makedirs(models_destination)
+        if not os.path.exists(VECT_DESTINATION):
+            os.makedirs(VECT_DESTINATION)
         
-        joblib.dump(nb_classifier, os.path.join(models_destination, "naive_bayes_model.pkl"))
-        joblib.dump(nb_classifier1, os.path.join(models_destination, "naive_bayes_model1.pkl"))
         
-        models_destination1 = "models/v4/lg"
-        if not os.path.exists(models_destination1):
-            os.makedirs(models_destination1)
+        joblib.dump(tfidf_vectorizer, os.path.join(VECT_DESTINATION, "tfidf_vectorizer.pkl"))
+        joblib.dump(count_vectorizer, os.path.join(VECT_DESTINATION, "count_vectorizer.pkl"))
+
+
+        if not os.path.exists(MODELS_DESTINATION):
+            os.makedirs(MODELS_DESTINATION)
         
-        joblib.dump(logreg, os.path.join(models_destination1, "logistic_regression_model.pkl"))
-        joblib.dump(logreg1, os.path.join(models_destination1, "logistic_regression_model1.pkl"))
-        logging.info(f'модель натренирована и сохранена в {vect_destination} {models_destination} {models_destination1}')
+        joblib.dump(nb_classifier, os.path.join(MODELS_DESTINATION, "naive_bayes_model.pkl"))
+        joblib.dump(nb_classifier1, os.path.join(MODELS_DESTINATION, "naive_bayes_model1.pkl"))
+        
+        MODELS_DESTINATION1
+        if not os.path.exists(MODELS_DESTINATION1):
+            os.makedirs(MODELS_DESTINATION1)
+        
+        joblib.dump(logreg, os.path.join(MODELS_DESTINATION1, "logistic_regression_model.pkl"))
+        joblib.dump(logreg1, os.path.join(MODELS_DESTINATION1, "logistic_regression_model1.pkl"))
+        logging.info(f'модель натренирована и сохранена в {VECT_DESTINATION} {MODELS_DESTINATION1} {MODELS_DESTINATION1}')
     except Exception as e:
         logging.error(f"ошибка при обучении и сохранении модели: {e}")
