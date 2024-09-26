@@ -21,4 +21,4 @@ utils/__pycache__/
 *.jpg
 .DS_Store
 *.pkl
-
+models/v4/count_vectorizer.pkl

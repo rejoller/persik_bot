@@ -1,4 +1,0 @@
-models/v4/nb/naive_bayes_model.pkl filter=lfs diff=lfs merge=lfs -text
-models/v4/nb/naive_bayes_model1.pkl filter=lfs diff=lfs merge=lfs -text
-models/v4/count_vectorizer.pkl filter=lfs diff=lfs merge=lfs -text
-models/v4/tfidf_vectorizer.pkl filter=lfs diff=lfs merge=lfs -text
