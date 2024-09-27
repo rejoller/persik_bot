@@ -53,7 +53,7 @@ async def badwords_autochecker(app, bad_words=None, unidecoded_bad_words=None):
         if message.animation:
             await app.send_message(
                 chat_id=CHAT_ID_MODERATORS,
-                text=f"обнаружена анимация",)
+                text="обнаружена анимация",)
             await message.forward(chat_id=CHAT_ID_MODERATORS)
             try:
                 await message.delete()
@@ -126,7 +126,7 @@ async def pyro_main_handler(app, message):
     message_text = message.text.lower() if message.text else ""
     message_caption = message.caption.lower() if message.caption else ""
     if message_text:
-        sanya_spam_checkv3 = spamchecker3(message_text)
+        sanya_spam_checkv3 = await spamchecker3(message_text)
         if sanya_spam_checkv3 == 1:
             await app.send_message(
                 chat_id=CHAT_ID_MODERATORS,
@@ -139,11 +139,12 @@ async def pyro_main_handler(app, message):
             # except Exception as e:
             #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
             pass
-        spam_checkv4 = ensemble_predict(message_text)
+        
+        spam_checkv4 = await ensemble_predict(message_text)
         if spam_checkv4 == 1:
             await app.send_message(
                 chat_id=CHAT_ID_MODERATORS,
-                text=f"😱челики похоже я нашел спам с помощью алгоритма от 26.09",
+                text="😱челики похоже я нашел спам с помощью алгоритма от 26.09",
             )
             await message.forward(chat_id=CHAT_ID_MODERATORS)
 
@@ -203,11 +204,11 @@ async def pyro_main_handler(app, message):
         
         
     if message_caption:        
-        sanya_spam_checkv3 = spamchecker3(message_caption)
+        sanya_spam_checkv3 = await spamchecker3(message_caption)
         if sanya_spam_checkv3 == 1:
             await app.send_message(
                 chat_id=CHAT_ID_MODERATORS,
-                text=f"обнаружен спам с помощью алгоритма от 20.09",
+                text="обнаружен спам с помощью алгоритма от 20.09",
             )
             await message.forward(chat_id=CHAT_ID_MODERATORS)
 
@@ -217,11 +218,11 @@ async def pyro_main_handler(app, message):
             #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
             pass
         
-        spam_checkv4 = ensemble_predict(message_caption)
+        spam_checkv4 = await ensemble_predict(message_caption)
         if spam_checkv4 == 1:
             await app.send_message(
                 chat_id=CHAT_ID_MODERATORS,
-                text=f"😱челики похоже я нашел спам с помощью алгоритма от 26.09",
+                text="😱челики похоже я нашел спам с помощью алгоритма от 26.09",
             )
             await message.forward(chat_id=CHAT_ID_MODERATORS)
 
