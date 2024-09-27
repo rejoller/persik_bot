@@ -4,7 +4,7 @@ from utils.spamcheckerv3.spamchecker_loader import preprocess_text
 
 
 
-def spamchecker3(text):
+async def spamchecker3(text):
     # Загрузка модели и векторизатора
     model = joblib.load("models/v3/spam_model3.pkl")
     vectorizer = joblib.load("models/v3/vectorizer3.pkl")
