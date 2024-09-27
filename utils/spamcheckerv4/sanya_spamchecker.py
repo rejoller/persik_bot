@@ -50,10 +50,10 @@ async def ensemble_predict(phrase):
 
     
     
-    log_reg_result1 = predict_phrase_tf(phrase, logreg1) 
-    bayes_result1 = predict_phrase_tf(phrase, nb_classifier1)  
-    log_reg_result = predict_phrase_count_v(phrase, logreg) 
-    bayes_result = predict_phrase_count_v(phrase, nb_classifier) 
+    log_reg_result1 = await predict_phrase_tf(phrase, logreg1) 
+    bayes_result1 = await predict_phrase_tf(phrase, nb_classifier1)  
+    log_reg_result = await predict_phrase_count_v(phrase, logreg) 
+    bayes_result = await predict_phrase_count_v(phrase, nb_classifier) 
 
     results = [log_reg_result1, bayes_result1, log_reg_result, bayes_result]
     logging.info(f'результаты проверки фразы {phrase}: {results}')
