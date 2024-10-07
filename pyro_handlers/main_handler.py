@@ -6,15 +6,15 @@ from config import (
     PYRO_API_ID,
     TARGET_CHANNEL_ID,
     TARGET_CHAT_ID,
+    MODEL_DESTINATION_5,
+    VECT_DESTINATION_5
 )
 from database.models import Badphrases
 from database.engine import session_maker
 from sqlalchemy import select
 import pandas as pd
 from utils.unidecoder import unidecoder
-from utils.spam_checker import predict
-from utils.spamcheckerv3.sanya_spamchecker import spamchecker3
-from utils.spamcheckerv4.sanya_spamchecker import ensemble_predict
+from utils.spamcheckerv5.spamchecker import spamchecker5
 import re
 import string
 from nltk.stem import SnowballStemmer
@@ -58,7 +58,7 @@ async def badwords_autochecker(app, bad_words=None, unidecoded_bad_words=None):
             try:
                 await message.delete()
             except Exception as e:
-                logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
+                logging.error(f"Ошибка при удалении сообщения с анимацией: {e}")
             return  
 
         if any(word in message_text.split() for word in bad_words) or any(word in message_caption.split() for word in bad_words):
@@ -125,12 +125,13 @@ async def pyro_main_handler(app, message):
 
     message_text = message.text.lower() if message.text else ""
     message_caption = message.caption.lower() if message.caption else ""
+    
     if message_text:
-        sanya_spam_checkv3 = await spamchecker3(message_text)
-        if sanya_spam_checkv3 == 1:
+        spam_checkv5 = await spamchecker5(message_text)
+        if spam_checkv5 == 1:
             await app.send_message(
                 chat_id=CHAT_ID_MODERATORS,
-                text=f"обнаружен спам с помощью алгоритма от 20.09",
+                text="обнаружен спам с помощью алгоритма Feodor Cherepakhin",
             )
             await message.forward(chat_id=CHAT_ID_MODERATORS)
 
@@ -140,25 +141,13 @@ async def pyro_main_handler(app, message):
             #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
             pass
         
-        spam_checkv4 = await ensemble_predict(message_text)
-        if spam_checkv4 == 1:
-            await app.send_message(
-                chat_id=CHAT_ID_MODERATORS,
-                text="😱челики похоже я нашел спам с помощью алгоритма от 26.09",
-            )
-            await message.forward(chat_id=CHAT_ID_MODERATORS)
 
-            # try:
-            #     await message.delete()
-            # except Exception as e:
-            #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
-            pass
 
 
     if message.animation:
         await app.send_message(
             chat_id=CHAT_ID_MODERATORS,
-            text=f"обнаружена анимация",
+            text="обнаружена анимация",
         )
         await message.forward(chat_id=CHAT_ID_MODERATORS)
 
@@ -204,25 +193,11 @@ async def pyro_main_handler(app, message):
         
         
     if message_caption:        
-        sanya_spam_checkv3 = await spamchecker3(message_caption)
-        if sanya_spam_checkv3 == 1:
+        spam_checkv5 = await spamchecker5(message_caption)
+        if spam_checkv5 == 1:
             await app.send_message(
                 chat_id=CHAT_ID_MODERATORS,
-                text="обнаружен спам с помощью алгоритма от 20.09",
-            )
-            await message.forward(chat_id=CHAT_ID_MODERATORS)
-
-            # try:
-            #     await message.delete()
-            # except Exception as e:
-            #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
-            pass
-        
-        spam_checkv4 = await ensemble_predict(message_caption)
-        if spam_checkv4 == 1:
-            await app.send_message(
-                chat_id=CHAT_ID_MODERATORS,
-                text="😱челики похоже я нашел спам с помощью алгоритма от 26.09",
+                text="обнаружен спам с помощью алгоритма Feodor Cherepakhin",
             )
             await message.forward(chat_id=CHAT_ID_MODERATORS)
 
@@ -244,8 +219,6 @@ async def run_pyrogram():
 
     print("пиро работает")
     
-   
-
     async with session_maker() as session:
         check_word_query = select(
             Badphrases.phrase_text, Badphrases.unicoded_phrase_text

@@ -23,8 +23,8 @@ router = Router()
 @router.message(StateFilter(Form.one_word))
 async def one_word_handler(message: Message, session: AsyncSession, state: FSMContext):
     try:          
-        unicoded_phrase_text = unidecoder(message.text)
-        save_query = insert(Badphrases).values(phrase_text = message.text, unicoded_phrase_text = unicoded_phrase_text)
+        unicoded_phrase_text = unidecoder(message.text.lower())
+        save_query = insert(Badphrases).values(phrase_text = message.text.lower(), unicoded_phrase_text = unicoded_phrase_text)
         await session.execute(save_query)
         await session.commit()
         await message.answer('Новая фраза загружена в базу данных')
