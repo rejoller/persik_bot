@@ -126,23 +126,6 @@ async def pyro_main_handler(app, message):
     message_text = message.text.lower() if message.text else ""
     message_caption = message.caption.lower() if message.caption else ""
     
-    if message_text:
-        spam_checkv5 = await spamchecker5(message_text)
-        if spam_checkv5 == 1:
-            await app.send_message(
-                chat_id=CHAT_ID_MODERATORS,
-                text="обнаружен спам с помощью алгоритма Feodor Cherepakhin",
-            )
-            await message.forward(chat_id=CHAT_ID_MODERATORS)
-
-            # try:
-            #     await message.delete()
-            # except Exception as e:
-            #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
-            pass
-        
-
-
 
     if message.animation:
         await app.send_message(
@@ -189,7 +172,20 @@ async def pyro_main_handler(app, message):
         return
     
     
+    if message_text:
+        spam_checkv5 = await spamchecker5(message_text)
+        if spam_checkv5 == 1:
+            await app.send_message(
+                chat_id=CHAT_ID_MODERATORS,
+                text="обнаружен спам с помощью алгоритма Feodor Cherepakhin",
+            )
+            await message.forward(chat_id=CHAT_ID_MODERATORS)
 
+            try:
+                await message.delete()
+            except Exception as e:
+                logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
+            return
         
         
     if message_caption:        
@@ -201,11 +197,12 @@ async def pyro_main_handler(app, message):
             )
             await message.forward(chat_id=CHAT_ID_MODERATORS)
 
-            # try:
-            #     await message.delete()
-            # except Exception as e:
-            #     logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
-            pass
+            try:
+                await message.delete()
+            except Exception as e:
+                logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
+                
+            return
         
 
         
