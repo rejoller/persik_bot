@@ -285,20 +285,20 @@ async def pyro_main_handler(app, message):
                 logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
             return
 
-        for word in bad_words:
-            found_phrase = await full_phrase_analyse(message_text, bad_words)
-            if found_phrase:
-                await app.send_message(
-                    chat_id=CHAT_ID_MODERATORS,
-                    text=f"Найден мат\n{found_phrase}",
-                )
-                await message.forward(chat_id=CHAT_ID_MODERATORS)
-                # try:
-                #     # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
-                #     await message.delete()
-                # except Exception as e:
-                #     logging.error(f"Ошибка при удалении сообщения: {e}")
-                pass
+
+        found_phrase = await full_phrase_analyse(message_text, bad_words)
+        if found_phrase:
+            await app.send_message(
+                chat_id=CHAT_ID_MODERATORS,
+                text=f"Найден мат\n{found_phrase}",
+            )
+            await message.forward(chat_id=CHAT_ID_MODERATORS)
+            # try:
+            #     # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
+            #     await message.delete()
+            # except Exception as e:
+            #     logging.error(f"Ошибка при удалении сообщения: {e}")
+            pass
 
     if message_caption:
         spam_checkv5 = await spamchecker5(message_caption)
@@ -316,20 +316,20 @@ async def pyro_main_handler(app, message):
 
             return
 
-        for word in bad_words:
-            found_phrase = await full_phrase_analyse(message_caption, bad_words)
-            if found_phrase:
-                await app.send_message(
-                    chat_id=CHAT_ID_MODERATORS,
-                    text=f"Ниден мат\n{found_phrase}",
-                )
-                await message.forward(chat_id=CHAT_ID_MODERATORS)
-                # try:
-                #     # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
-                #     await message.delete()
-                # except Exception as e:
-                #     logging.error(f"Ошибка при удалении сообщения: {e}")
-                pass
+
+        found_phrase = await full_phrase_analyse(message_caption, bad_words)
+        if found_phrase:
+            await app.send_message(
+                chat_id=CHAT_ID_MODERATORS,
+                text=f"Ниден мат\n{found_phrase}",
+            )
+            await message.forward(chat_id=CHAT_ID_MODERATORS)
+            # try:
+            #     # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
+            #     await message.delete()
+            # except Exception as e:
+            #     logging.error(f"Ошибка при удалении сообщения: {e}")
+            pass
             
             
         if decoded_message_text:
