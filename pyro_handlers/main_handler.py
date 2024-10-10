@@ -42,6 +42,15 @@ async def find_similar_words(search_value, words_list, threshold=70):
     return result
 
 
+
+
+async def full_phrase_analyse(message_text, bad_words):
+    for word in bad_words:
+        if re.search(rf"\b{word}\b", message_text, re.IGNORECASE):
+            return word
+
+
+
 async def badwords_autochecker(app, bad_words=None, unidecoded_bad_words=None):
     async for message in app.get_chat_history(chat_id=TARGET_CHAT_ID, limit=15):
         await asyncio.sleep(1)
@@ -85,15 +94,11 @@ async def badwords_autochecker(app, bad_words=None, unidecoded_bad_words=None):
         
         
         if message_text:
-            found_words = []
-            for word in bad_words:
-                if re.search(rf"\b{word}\b", message_text, re.IGNORECASE):
-                    found_words.append(word)
-                    
-            if found_words:
+            found_phrase = await full_phrase_analyse(message_text, bad_words)
+            if found_phrase:
                 await app.send_message(
                     chat_id=CHAT_ID_MODERATORS,
-                    text=f"Найден мат\n{', '.join(found_words)}",
+                    text=f"Найден мат\n{found_phrase}",
                 )
                 await message.forward(chat_id=CHAT_ID_MODERATORS)
                 # try:
@@ -102,18 +107,16 @@ async def badwords_autochecker(app, bad_words=None, unidecoded_bad_words=None):
                 # except Exception as e:
                 #     logging.error(f"Ошибка при удалении сообщения: {e}")
                 pass
+            
+            
                 
                 
         if message_caption:
-            found_words = []
-            for word in bad_words:
-                if re.search(rf"\b{word}\b", message_caption, re.IGNORECASE):
-                    found_words.append(word)
-                    
-            if found_words:
+            found_phrase = await full_phrase_analyse(message_caption, bad_words)
+            if found_phrase:
                 await app.send_message(
                     chat_id=CHAT_ID_MODERATORS,
-                    text=f"Найден мат\n{', '.join(found_words)}",
+                    text=f"Найден мат\n{found_phrase}",
                 )
                 await message.forward(chat_id=CHAT_ID_MODERATORS)
                 # try:
@@ -153,15 +156,11 @@ async def badwords_autochecker(app, bad_words=None, unidecoded_bad_words=None):
         
         
         if decoded_message_text:
-            found_words = []
-            for word in unidecoded_bad_words:
-                if re.search(rf"\b{word}\b", decoded_message_text, re.IGNORECASE):
-                    found_words.append(word)
-                    
-            if found_words:
+            found_phrase = await full_phrase_analyse(decoded_message_text, unidecoded_bad_words)
+            if found_phrase:
                 await app.send_message(
                     chat_id=CHAT_ID_MODERATORS,
-                    text=f"Найден мат с помощью юнидекодера\n{', '.join(found_words)}",
+                    text=f"Найден мат с помощью юнидекодера\n{found_phrase}",
                 )
                 await message.forward(chat_id=CHAT_ID_MODERATORS)
                 # try:
@@ -173,15 +172,11 @@ async def badwords_autochecker(app, bad_words=None, unidecoded_bad_words=None):
                 
                 
         if decoded_message_caption:
-            found_words = []
-            for word in unidecoded_bad_words:
-                if re.search(rf"\b{word}\b", decoded_message_caption, re.IGNORECASE):
-                    found_words.append(word)
-                    
-            if found_words:
+            found_phrase = await full_phrase_analyse(decoded_message_caption, unidecoded_bad_words)
+            if found_phrase:
                 await app.send_message(
                     chat_id=CHAT_ID_MODERATORS,
-                    text=f"Найден мат с помощью юнидекодера\n{', '.join(found_words)}",
+                    text=f"Найден мат с помощью юнидекодера\n{found_phrase}",
                 )
                 await message.forward(chat_id=CHAT_ID_MODERATORS)
                 # try:
@@ -291,15 +286,11 @@ async def pyro_main_handler(app, message):
             return
 
         for word in bad_words:
-            found_words = []
-            for word in bad_words:
-                if re.search(rf"\b{word}\b", message_text, re.IGNORECASE):
-                    found_words.append(word)
-                    
-            if found_words:
+            found_phrase = await full_phrase_analyse(message_text, bad_words)
+            if found_phrase:
                 await app.send_message(
                     chat_id=CHAT_ID_MODERATORS,
-                    text=f"Найден мат\n{', '.join(found_words)}",
+                    text=f"Найден мат\n{found_phrase}",
                 )
                 await message.forward(chat_id=CHAT_ID_MODERATORS)
                 # try:
@@ -326,15 +317,11 @@ async def pyro_main_handler(app, message):
             return
 
         for word in bad_words:
-            found_words = []
-            for word in bad_words:
-                if re.search(rf"\b{word}\b", message_caption, re.IGNORECASE):
-                    found_words.append(word)
-                    
-            if found_words:
+            found_phrase = await full_phrase_analyse(message_caption, bad_words)
+            if found_phrase:
                 await app.send_message(
                     chat_id=CHAT_ID_MODERATORS,
-                    text=f"Найден мат\n{', '.join(found_words)}",
+                    text=f"Ниден мат\n{found_phrase}",
                 )
                 await message.forward(chat_id=CHAT_ID_MODERATORS)
                 # try:
@@ -346,15 +333,11 @@ async def pyro_main_handler(app, message):
             
             
         if decoded_message_text:
-            found_words = []
-            for word in unidecoded_bad_words:
-                if re.search(rf"\b{word}\b", decoded_message_text, re.IGNORECASE):
-                    found_words.append(word)
-                    
-            if found_words:
+            found_phrase = await full_phrase_analyse(decoded_message_text, unidecoded_bad_words)
+            if found_phrase:
                 await app.send_message(
                     chat_id=CHAT_ID_MODERATORS,
-                    text=f"Найден мат с помощью юнидекодера\n{', '.join(found_words)}",
+                    text=f"Ниден мат с помощью юнидекодера\n{found_phrase}",
                 )
                 await message.forward(chat_id=CHAT_ID_MODERATORS)
                 # try:
@@ -363,18 +346,15 @@ async def pyro_main_handler(app, message):
                 # except Exception as e:
                 #     logging.error(f"Ошибка при удалении сообщения: {e}")
                 pass
+
                 
                 
         if decoded_message_caption:
-            found_words = []
-            for word in unidecoded_bad_words:
-                if re.search(rf"\b{word}\b", decoded_message_caption, re.IGNORECASE):
-                    found_words.append(word)
-                    
-            if found_words:
+            found_phrase = await full_phrase_analyse(decoded_message_caption, unidecoded_bad_words)
+            if found_phrase:
                 await app.send_message(
                     chat_id=CHAT_ID_MODERATORS,
-                    text=f"Найден мат с помощью юнидекодера\n{', '.join(found_words)}",
+                    text=f"Ниден мат с помощью юнидекодера\n{found_phrase}",
                 )
                 await message.forward(chat_id=CHAT_ID_MODERATORS)
                 # try:
@@ -383,6 +363,7 @@ async def pyro_main_handler(app, message):
                 # except Exception as e:
                 #     logging.error(f"Ошибка при удалении сообщения: {e}")
                 pass
+
 
 
 async def run_pyrogram():
