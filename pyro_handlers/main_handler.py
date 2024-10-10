@@ -93,12 +93,12 @@ async def badwords_autochecker(app, bad_words=None, unidecoded_bad_words=None):
                         text=f"Найден мат\n{', '.join(found_words)}",
                     )
                     await message.forward(chat_id=CHAT_ID_MODERATORS)
-                    try:
-                        # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
-                        await message.delete()
-                    except Exception as e:
-                        logging.error(f"Ошибка при удалении сообщения: {e}")
-                    return
+                    # try:
+                    #     # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
+                    #     await message.delete()
+                    # except Exception as e:
+                    #     logging.error(f"Ошибка при удалении сообщения: {e}")
+                    pass
                 
                 
         if message_caption:
@@ -110,12 +110,12 @@ async def badwords_autochecker(app, bad_words=None, unidecoded_bad_words=None):
                         text=f"Ниден мат\n{', '.join(found_words)}",
                     )
                     await message.forward(chat_id=CHAT_ID_MODERATORS)
-                    try:
-                        # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
-                        await message.delete()
-                    except Exception as e:
-                        logging.error(f"Ошибка при удалении сообщения: {e}")
-                    return
+                    # try:
+                    #     # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
+                    #     await message.delete()
+                    # except Exception as e:
+                    #     logging.error(f"Ошибка при удалении сообщения: {e}")
+                    pass
                 
                 
                 
@@ -155,12 +155,12 @@ async def badwords_autochecker(app, bad_words=None, unidecoded_bad_words=None):
                         text=f"Найден мат с помощью юнидекодера\n{', '.join(found_words)}",
                     )
                     await message.forward(chat_id=CHAT_ID_MODERATORS)
-                    try:
-                        # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
-                        await message.delete()
-                    except Exception as e:
-                        logging.error(f"Ошибка при удалении сообщения: {e}")
-                    return
+                    # try:
+                    #     # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
+                    #     await message.delete()
+                    # except Exception as e:
+                    #     logging.error(f"Ошибка при удалении сообщения: {e}")
+                    pass
                 
                 
         if decoded_message_caption:
@@ -172,12 +172,12 @@ async def badwords_autochecker(app, bad_words=None, unidecoded_bad_words=None):
                         text=f"Найден мат с помощью юнидекодера\n{', '.join(found_words)}",
                     )
                     await message.forward(chat_id=CHAT_ID_MODERATORS)
-                    try:
-                        # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
-                        await message.delete()
-                    except Exception as e:
-                        logging.error(f"Ошибка при удалении сообщения: {e}")
-                    return
+                    # try:
+                    #     # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
+                    #     await message.delete()
+                    # except Exception as e:
+                    #     logging.error(f"Ошибка при удалении сообщения: {e}")
+                    pass
 
 
 async def check_message_for_bad_words(message_words, bad_words, threshold=70):
@@ -286,12 +286,12 @@ async def pyro_main_handler(app, message):
                     text=f"Найден мат\n{', '.join(found_words)}",
                 )
                 await message.forward(chat_id=CHAT_ID_MODERATORS)
-                try:
-                    # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
-                    await message.delete()
-                except Exception as e:
-                    logging.error(f"Ошибка при удалении сообщения: {e}")
-                return
+                # try:
+                #     # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
+                #     await message.delete()
+                # except Exception as e:
+                #     logging.error(f"Ошибка при удалении сообщения: {e}")
+                pass
 
     if message_caption:
         spam_checkv5 = await spamchecker5(message_caption)
@@ -317,12 +317,12 @@ async def pyro_main_handler(app, message):
                     text=f"Ниден мат\n{', '.join(found_words)}",
                 )
                 await message.forward(chat_id=CHAT_ID_MODERATORS)
-                try:
-                    # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
-                    await message.delete()
-                except Exception as e:
-                    logging.error(f"Ошибка при удалении сообщения: {e}")
-                return
+                # try:
+                #     # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
+                #     await message.delete()
+                # except Exception as e:
+                #     logging.error(f"Ошибка при удалении сообщения: {e}")
+                pass
             
             
         if decoded_message_text:
@@ -334,12 +334,12 @@ async def pyro_main_handler(app, message):
                         text=f"Найден мат с помощью юнидекодера\n{', '.join(found_words)}",
                     )
                     await message.forward(chat_id=CHAT_ID_MODERATORS)
-                    try:
-                        # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
-                        await message.delete()
-                    except Exception as e:
-                        logging.error(f"Ошибка при удалении сообщения: {e}")
-                    return
+                    # try:
+                    #     # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
+                    #     await message.delete()
+                    # except Exception as e:
+                    #     logging.error(f"Ошибка при удалении сообщения: {e}")
+                    pass
                 
                 
         if decoded_message_caption:
@@ -351,12 +351,12 @@ async def pyro_main_handler(app, message):
                         text=f"Найден мат с помощью юнидекодера\n{', '.join(found_words)}",
                     )
                     await message.forward(chat_id=CHAT_ID_MODERATORS)
-                    try:
-                        # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
-                        await message.delete()
-                    except Exception as e:
-                        logging.error(f"Ошибка при удалении сообщения: {e}")
-                    return
+                    # try:
+                    #     # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
+                    #     await message.delete()
+                    # except Exception as e:
+                    #     logging.error(f"Ошибка при удалении сообщения: {e}")
+                    pass
 
 
 async def run_pyrogram():
