@@ -7,7 +7,7 @@ from config import (
     TARGET_CHANNEL_ID,
     TARGET_CHAT_ID,
     MODEL_DESTINATION_5,
-    VECT_DESTINATION_5
+    VECT_DESTINATION_5,
 )
 from database.models import Badphrases
 from database.engine import session_maker
@@ -43,28 +43,33 @@ async def find_similar_words(search_value, words_list, threshold=70):
 
 
 async def badwords_autochecker(app, bad_words=None, unidecoded_bad_words=None):
-    async for message in app.get_chat_history(chat_id=TARGET_CHAT_ID, limit=10):
+    async for message in app.get_chat_history(chat_id=TARGET_CHAT_ID, limit=15):
         await asyncio.sleep(1)
-	
+
         message_text = message.text.lower() if message.text else ""
         message_caption = message.caption.lower() if message.caption else ""
-        
-    
+
         if message.animation:
             await app.send_message(
                 chat_id=CHAT_ID_MODERATORS,
-                text="обнаружена анимация",)
+                text="обнаружена анимация",
+            )
             await message.forward(chat_id=CHAT_ID_MODERATORS)
             try:
                 await message.delete()
             except Exception as e:
                 logging.error(f"Ошибка при удалении сообщения с анимацией: {e}")
-            return  
+            return
 
-        if any(word in message_text.split() for word in bad_words) or any(word in message_caption.split() for word in bad_words):
-            found_words = [word for word in bad_words if word in message_text.split() or word in message_caption.split()]
+        if any(word in message_text.split() for word in bad_words) or any(
+            word in message_caption.split() for word in bad_words
+        ):
+            found_words = [
+                word
+                for word in bad_words
+                if word in message_text.split() or word in message_caption.split()
+            ]
 
-            
             await app.send_message(
                 chat_id=CHAT_ID_MODERATORS,
                 text=f"Найден мат\n{', '.join(found_words)}",
@@ -76,13 +81,57 @@ async def badwords_autochecker(app, bad_words=None, unidecoded_bad_words=None):
             except Exception as e:
                 logging.error(f"Ошибка при удалении сообщения: {e}")
             return
+        
+        
+        
+        if message_text:
+            for word in bad_words:
+                if word in message_text:
+                    found_words = [word]
+                    await app.send_message(
+                        chat_id=CHAT_ID_MODERATORS,
+                        text=f"Найден мат\n{', '.join(found_words)}",
+                    )
+                    await message.forward(chat_id=CHAT_ID_MODERATORS)
+                    try:
+                        # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
+                        await message.delete()
+                    except Exception as e:
+                        logging.error(f"Ошибка при удалении сообщения: {e}")
+                    return
+                
+                
+        if message_caption:
+            for word in bad_words:
+                if word in message_caption:
+                    found_words = [word]
+                    await app.send_message(
+                        chat_id=CHAT_ID_MODERATORS,
+                        text=f"Ниден мат\n{', '.join(found_words)}",
+                    )
+                    await message.forward(chat_id=CHAT_ID_MODERATORS)
+                    try:
+                        # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
+                        await message.delete()
+                    except Exception as e:
+                        logging.error(f"Ошибка при удалении сообщения: {e}")
+                    return
+                
+                
+                
 
         decoded_message_text = [unidecoder(word) for word in message_text.split()]
         decoded_message_caption = [unidecoder(word) for word in message_caption.split()]
 
-        if any(word in decoded_message_text for word in unidecoded_bad_words) or any(word in decoded_message_caption for word in unidecoded_bad_words):
-            found_words = [word for word in unidecoded_bad_words if word in decoded_message_text or word in decoded_message_caption]
-        
+        if any(word in decoded_message_text for word in unidecoded_bad_words) or any(
+            word in decoded_message_caption for word in unidecoded_bad_words
+        ):
+            found_words = [
+                word
+                for word in unidecoded_bad_words
+                if word in decoded_message_text or word in decoded_message_caption
+            ]
+
             await app.send_message(
                 chat_id=CHAT_ID_MODERATORS,
                 text=f"Найден мат с помощью юнидекодера\n{', '.join(found_words)}",
@@ -94,10 +143,43 @@ async def badwords_autochecker(app, bad_words=None, unidecoded_bad_words=None):
             except Exception as e:
                 logging.error(f"Ошибка при удалении сообщения: {e}")
             return
+        
+        
+        
+        if decoded_message_text:
+            for word in unidecoded_bad_words:
+                if word in decoded_message_text:
+                    found_words = [word]
+                    await app.send_message(
+                        chat_id=CHAT_ID_MODERATORS,
+                        text=f"Найден мат с помощью юнидекодера\n{', '.join(found_words)}",
+                    )
+                    await message.forward(chat_id=CHAT_ID_MODERATORS)
+                    try:
+                        # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
+                        await message.delete()
+                    except Exception as e:
+                        logging.error(f"Ошибка при удалении сообщения: {e}")
+                    return
+                
+                
+        if decoded_message_caption:
+            for word in unidecoded_bad_words:
+                if word in decoded_message_caption:
+                    found_words = [word]
+                    await app.send_message(
+                        chat_id=CHAT_ID_MODERATORS,
+                        text=f"Найден мат с помощью юнидекодера\n{', '.join(found_words)}",
+                    )
+                    await message.forward(chat_id=CHAT_ID_MODERATORS)
+                    try:
+                        # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
+                        await message.delete()
+                    except Exception as e:
+                        logging.error(f"Ошибка при удалении сообщения: {e}")
+                    return
 
-            
-            
-            
+
 async def check_message_for_bad_words(message_words, bad_words, threshold=70):
     for word in message_words:
         similar_bad_words = await find_similar_words(word, bad_words, threshold)
@@ -118,14 +200,13 @@ async def pyro_main_handler(app, message):
 
     bad_words = []
     unidecoded_bad_words = []
-    
+
     for i, row in df.iterrows():
         bad_words.append(row["phrase_text"])
         unidecoded_bad_words.append(row["unicoded_phrase_text"])
 
     message_text = message.text.lower() if message.text else ""
     message_caption = message.caption.lower() if message.caption else ""
-    
 
     if message.animation:
         await app.send_message(
@@ -139,10 +220,15 @@ async def pyro_main_handler(app, message):
         except Exception as e:
             logging.error(f"Ошибка при удалении сообщения с анимацие: {e}")
         return
-    
-   
-    if any(word in message_text.split() for word in bad_words) or any(word in message_caption.split() for word in bad_words):
-        found_words = [word for word in bad_words if word in message_text.split() or word in message_caption.split()]
+
+    if any(word in message_text.split() for word in bad_words) or any(
+        word in message_caption.split() for word in bad_words
+    ):
+        found_words = [
+            word
+            for word in bad_words
+            if word in message_text.split() or word in message_caption.split()
+        ]
         await app.send_message(
             chat_id=CHAT_ID_MODERATORS,
             text=f"Найден мат\n{', '.join(found_words)}",
@@ -158,8 +244,14 @@ async def pyro_main_handler(app, message):
     decoded_message_text = [unidecoder(word) for word in message_text.split()]
     decoded_message_caption = [unidecoder(word) for word in message_caption.split()]
 
-    if any(word in decoded_message_text for word in unidecoded_bad_words) or any(word in decoded_message_caption for word in unidecoded_bad_words):
-        found_words = [word for word in unidecoded_bad_words if word in decoded_message_text or word in decoded_message_caption]
+    if any(word in decoded_message_text for word in unidecoded_bad_words) or any(
+        word in decoded_message_caption for word in unidecoded_bad_words
+    ):
+        found_words = [
+            word
+            for word in unidecoded_bad_words
+            if word in decoded_message_text or word in decoded_message_caption
+        ]
         await app.send_message(
             chat_id=CHAT_ID_MODERATORS,
             text=f"Найден мат с помощью юнидекодера\n{', '.join(found_words)}",
@@ -170,8 +262,7 @@ async def pyro_main_handler(app, message):
         except Exception as e:
             logging.error(f"Ошибка при удалении сообщения: {e}")
         return
-    
-    
+
     if message_text:
         spam_checkv5 = await spamchecker5(message_text)
         if spam_checkv5 == 1:
@@ -186,9 +277,23 @@ async def pyro_main_handler(app, message):
             except Exception as e:
                 logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
             return
-        
-        
-    if message_caption:        
+
+        for word in bad_words:
+            if word in message_text:
+                found_words = [word]
+                await app.send_message(
+                    chat_id=CHAT_ID_MODERATORS,
+                    text=f"Найден мат\n{', '.join(found_words)}",
+                )
+                await message.forward(chat_id=CHAT_ID_MODERATORS)
+                try:
+                    # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
+                    await message.delete()
+                except Exception as e:
+                    logging.error(f"Ошибка при удалении сообщения: {e}")
+                return
+
+    if message_caption:
         spam_checkv5 = await spamchecker5(message_caption)
         if spam_checkv5 == 1:
             await app.send_message(
@@ -201,13 +306,57 @@ async def pyro_main_handler(app, message):
                 await message.delete()
             except Exception as e:
                 logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
-                
+
             return
-        
 
-        
-        
-
+        for word in bad_words:
+            if word in message_caption:
+                found_words = [word]
+                await app.send_message(
+                    chat_id=CHAT_ID_MODERATORS,
+                    text=f"Ниден мат\n{', '.join(found_words)}",
+                )
+                await message.forward(chat_id=CHAT_ID_MODERATORS)
+                try:
+                    # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
+                    await message.delete()
+                except Exception as e:
+                    logging.error(f"Ошибка при удалении сообщения: {e}")
+                return
+            
+            
+        if decoded_message_text:
+            for word in unidecoded_bad_words:
+                if word in decoded_message_text:
+                    found_words = [word]
+                    await app.send_message(
+                        chat_id=CHAT_ID_MODERATORS,
+                        text=f"Найден мат с помощью юнидекодера\n{', '.join(found_words)}",
+                    )
+                    await message.forward(chat_id=CHAT_ID_MODERATORS)
+                    try:
+                        # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
+                        await message.delete()
+                    except Exception as e:
+                        logging.error(f"Ошибка при удалении сообщения: {e}")
+                    return
+                
+                
+        if decoded_message_caption:
+            for word in unidecoded_bad_words:
+                if word in decoded_message_caption:
+                    found_words = [word]
+                    await app.send_message(
+                        chat_id=CHAT_ID_MODERATORS,
+                        text=f"Найден мат с помощью юнидекодера\n{', '.join(found_words)}",
+                    )
+                    await message.forward(chat_id=CHAT_ID_MODERATORS)
+                    try:
+                        # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
+                        await message.delete()
+                    except Exception as e:
+                        logging.error(f"Ошибка при удалении сообщения: {e}")
+                    return
 
 
 async def run_pyrogram():
@@ -215,7 +364,7 @@ async def run_pyrogram():
     await app.start()
 
     print("пиро работает")
-    
+
     async with session_maker() as session:
         check_word_query = select(
             Badphrases.phrase_text, Badphrases.unicoded_phrase_text
