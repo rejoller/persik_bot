@@ -106,7 +106,7 @@ async def badwords_autochecker(app, bad_words=None, unidecoded_bad_words=None):
                 #     await message.delete()
                 # except Exception as e:
                 #     logging.error(f"Ошибка при удалении сообщения: {e}")
-                pass
+                return
             
             
                 
@@ -124,7 +124,7 @@ async def badwords_autochecker(app, bad_words=None, unidecoded_bad_words=None):
                 #     await message.delete()
                 # except Exception as e:
                 #     logging.error(f"Ошибка при удалении сообщения: {e}")
-                pass
+                return
                 
                 
                 
@@ -155,36 +155,7 @@ async def badwords_autochecker(app, bad_words=None, unidecoded_bad_words=None):
         
         
         
-        if decoded_message_text:
-            found_phrase = await full_phrase_analyse(decoded_message_text, unidecoded_bad_words)
-            if found_phrase:
-                await app.send_message(
-                    chat_id=CHAT_ID_MODERATORS,
-                    text=f"Найден мат с помощью юнидекодера\n{found_phrase}",
-                )
-                await message.forward(chat_id=CHAT_ID_MODERATORS)
-                # try:
-                #     # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
-                #     await message.delete()
-                # except Exception as e:
-                #     logging.error(f"Ошибка при удалении сообщения: {e}")
-                pass
-                
-                
-        if decoded_message_caption:
-            found_phrase = await full_phrase_analyse(decoded_message_caption, unidecoded_bad_words)
-            if found_phrase:
-                await app.send_message(
-                    chat_id=CHAT_ID_MODERATORS,
-                    text=f"Найден мат с помощью юнидекодера\n{found_phrase}",
-                )
-                await message.forward(chat_id=CHAT_ID_MODERATORS)
-                # try:
-                #     # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
-                #     await message.delete()
-                # except Exception as e:
-                #     logging.error(f"Ошибка при удалении сообщения: {e}")
-                pass
+
 
 
 async def check_message_for_bad_words(message_words, bad_words, threshold=70):
@@ -299,7 +270,7 @@ async def pyro_main_handler(app, message):
             #     await message.delete()
             # except Exception as e:
             #     logging.error(f"Ошибка при удалении сообщения: {e}")
-            pass
+            return
 
     if message_caption:
         spam_checkv5 = await spamchecker5(message_caption)
@@ -330,40 +301,10 @@ async def pyro_main_handler(app, message):
             #     await message.delete()
             # except Exception as e:
             #     logging.error(f"Ошибка при удалении сообщения: {e}")
-            pass
+            return
             
             
-        if decoded_message_text:
-            found_phrase = await full_phrase_analyse(decoded_message_text, unidecoded_bad_words)
-            if found_phrase:
-                await app.send_message(
-                    chat_id=CHAT_ID_MODERATORS,
-                    text=f"Ниден мат с помощью юнидекодера\n{found_phrase}",
-                )
-                await message.forward(chat_id=CHAT_ID_MODERATORS)
-                # try:
-                #     # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
-                #     await message.delete()
-                # except Exception as e:
-                #     logging.error(f"Ошибка при удалении сообщения: {e}")
-                pass
 
-                
-                
-        if decoded_message_caption:
-            found_phrase = await full_phrase_analyse(decoded_message_caption, unidecoded_bad_words)
-            if found_phrase:
-                await app.send_message(
-                    chat_id=CHAT_ID_MODERATORS,
-                    text=f"Ниден мат с помощью юнидекодера\n{found_phrase}",
-                )
-                await message.forward(chat_id=CHAT_ID_MODERATORS)
-                # try:
-                #     # await app.ban_chat_member(chat_id=CHAT_ID_MODERATORS, user_id = message.from_user.id, until_date =dt.now() + timedelta(days=1))
-                #     await message.delete()
-                # except Exception as e:
-                #     logging.error(f"Ошибка при удалении сообщения: {e}")
-                pass
 
 
 
