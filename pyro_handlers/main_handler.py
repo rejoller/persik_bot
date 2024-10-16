@@ -196,6 +196,7 @@ async def check_message_for_bad_words(message_words, bad_words, threshold=70):
 
 
 async def pyro_main_handler(app, message):
+    logging.info(f"Получено сообщение от {message.from_user.id}: {message.text}")
     async with session_maker() as session:
         check_word_query = select(
             Badphrases.phrase_text, Badphrases.unicoded_phrase_text
