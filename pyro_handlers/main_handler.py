@@ -173,10 +173,11 @@ async def pyro_main_handler(app, message):
     logging.info(f"Получено сообщение от {message.from_user.id}: {message.text}")
     try:
         api_response = await api_spam_check(message.from_user.id)
-        if api_response[0] > 0:
+        logging.info(f"Результат проверки пользователя {message.from_user.id}: {api_response}")
+        if api_response['offenses'] > 0:
             await app.send_message(
                 chat_id=CHAT_ID_MODERATORS,
-                text=f"Пользователь найден в базе спамеров. Количество жалоб: {api_response[0]}.\nSpam_factor {api_response[1]}",
+                text=f"Пользователь найден в базе спамеров. Количество жалоб: {api_response['offenses']}.\nSpam_factor {api_response['spam_factor']}",
             )
             await message.forward(chat_id=CHAT_ID_MODERATORS)
     except Exception as e:
