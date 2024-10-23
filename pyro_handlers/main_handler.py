@@ -170,10 +170,13 @@ async def check_message_for_bad_words(message_words, bad_words, threshold=70):
 
 
 async def pyro_main_handler(app, message):
-    logging.info(f"Получено сообщение от {message.from_user.id}: {message.text}")
+    user_id = int(message.from_user.id) if message.from_user.id else ""
+    message_text = str(message.text) if message.text else ""
+    logging.info(f"Получено сообщение от {user_id}: {message.text}")
+    
     try:
-        api_response = await api_spam_check(message.from_user.id)
-        logging.info(f"Результат проверки пользователя {message.from_user.id}: {api_response}")
+        api_response = await api_spam_check(user_id)
+        logging.info(f"Результат проверки пользователя {user_id}: {api_response}")
         if api_response['offenses'] > 0:
             await app.send_message(
                 chat_id=CHAT_ID_MODERATORS,
