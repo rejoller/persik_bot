@@ -13,8 +13,11 @@ from database.models import Badphrases
 from database.engine import session_maker
 from sqlalchemy import select
 import pandas as pd
+
 from utils.unidecoder import unidecoder
 from utils.spamcheckerv5.spamchecker import spamchecker5
+from utils.spamchecker_api.lols_bot_api import api_spam_check
+
 import re
 import string
 from nltk.stem import SnowballStemmer
@@ -168,6 +171,17 @@ async def check_message_for_bad_words(message_words, bad_words, threshold=70):
 
 async def pyro_main_handler(app, message):
     logging.info(f"Получено сообщение от {message.from_user.id}: {message.text}")
+    try:
+        api_response = await api_spam_check(message.from_user.id)
+        if api_response[0] > 0:
+            await app.send_message(
+                chat_id=CHAT_ID_MODERATORS,
+                text=f"Пользователь найден в базе спамеров. Количество жалоб: {api_response[0]}.\nSpam_factor {api_response[1]}",
+            )
+            await message.forward(chat_id=CHAT_ID_MODERATORS)
+    except Exception as e:
+        logging.error(f"Ошибка при проверке спамера: {e}")
+    
     async with session_maker() as session:
         check_word_query = select(
             Badphrases.phrase_text, Badphrases.unicoded_phrase_text
