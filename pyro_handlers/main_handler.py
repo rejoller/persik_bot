@@ -170,21 +170,35 @@ async def check_message_for_bad_words(message_words, bad_words, threshold=70):
 
 
 async def pyro_main_handler(app, message):
-    user_id = int(message.from_user.id) if message.from_user.id else ""
-    message_text = str(message.text) if message.text else ""
-    logging.info(f"Получено сообщение от {user_id}: {message.text}")
+    user_id = ''
+    message_text = ''
+    message_caption = ''
     
-    try:
-        api_response = await api_spam_check(user_id)
-        logging.info(f"Результат проверки пользователя {user_id}: {api_response}")
-        if api_response['offenses'] > 0:
-            await app.send_message(
-                chat_id=CHAT_ID_MODERATORS,
-                text=f"Пользователь найден в базе спамеров. Количество жалоб: {api_response['offenses']}.\nSpam_factor {api_response['spam_factor']}",
-            )
-            await message.forward(chat_id=CHAT_ID_MODERATORS)
-    except Exception as e:
-        logging.error(f"Ошибка при проверке спамера: {e}")
+    if message.from_user.id:
+        user_id = int(message.from_user.id)
+    if message.text:
+        message_text = str(message.text)
+    if message.caption:
+        message_caption = str(message.caption)
+    
+    if user_id and message_text:
+        logging.info(f"Получено сообщение от {user_id}: {message_text}")
+        
+    if user_id and message_caption:
+        logging.info(f"Получено сообщение от {user_id}: {message_caption}")
+        
+    if user_id:
+        try:
+            api_response = await api_spam_check(user_id)
+            logging.info(f"Результат проверки пользователя {user_id}: {api_response}")
+            if api_response['offenses'] > 0:
+                await app.send_message(
+                    chat_id=CHAT_ID_MODERATORS,
+                    text=f"Пользователь найден в базе спамеров. Количество жалоб: {api_response['offenses']}.\nSpam_factor {api_response['spam_factor']}",
+                )
+                await message.forward(chat_id=CHAT_ID_MODERATORS)
+        except Exception as e:
+            logging.error(f"Ошибка при проверке спамера: {e}")
     
     async with session_maker() as session:
         check_word_query = select(
