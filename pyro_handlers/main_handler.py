@@ -191,12 +191,18 @@ async def pyro_main_handler(app, message):
         try:
             api_response = await api_spam_check(user_id)
             logging.info(f"Результат проверки пользователя {user_id}: {api_response}")
-            if api_response['offenses'] > 0:
+            if api_response['offenses'] > 10:
                 await app.send_message(
                     chat_id=CHAT_ID_MODERATORS,
-                    text=f"Пользователь найден в базе спамеров. Количество жалоб: {api_response['offenses']}.\nSpam_factor {api_response['spam_factor']}",
+                    text=f"Пользователь найден в базе спамеров. Количество жалоб: {api_response['offenses']}.\nSpam_factor {api_response['spam_factor']}. Удаляю сообщение.",
                 )
                 await message.forward(chat_id=CHAT_ID_MODERATORS)
+                try:
+                    await message.delete()
+                except Exception as e:
+                    logging.error(f"Ошибка при удалении сообщения: {e}")
+                return
+            
         except Exception as e:
             logging.error(f"Ошибка при проверке спамера: {e}")
     

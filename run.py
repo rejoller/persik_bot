@@ -1,14 +1,10 @@
-import logging
-
-from sqlalchemy import select
 from database.db import DataBaseSession
-from database.models import Badphrases
 from handlers import setup_routers
 from aiogram import Bot, Dispatcher
 from aiogram.fsm.storage.redis import RedisStorage
 from logger.logging_config import setup_logging
 from logger.logging_middleware import LoggingMiddleware
-from config import BOT_TOKEN, PYRO_API_ID, PYRO_API_HASH, CHAT_ID_MODERATORS
+from config import BOT_TOKEN
 import asyncio
 from database.engine import session_maker
 
@@ -17,9 +13,7 @@ from database.engine import session_maker
 from pyro_handlers.main_handler import run_pyrogram
 import pandas as pd
 
-from utils.sanya_spamchecker_loader import train_and_save_model
-from utils.spamcheckerv3.spamchecker_loader import train_and_save_model3
-from utils.spamcheckerv4.spamchecker_loader import train_and_save_model4
+
 
 bot = Bot(BOT_TOKEN)
 
@@ -33,19 +27,8 @@ storage = RedisStorage.from_url("redis://localhost:6379/7")
 
 
 
-
-
-
-
-
 async def run_aiogram():
     setup_logging()
-    # train_and_save_model()
-    # train_and_save_model3()
-    # train_and_save_model4()
-
-    import nltk
-    # nltk.download('punkt_tab')
     dp = Dispatcher(storage=storage)
     
     dp.update.middleware(DataBaseSession(session_pool=session_maker))
