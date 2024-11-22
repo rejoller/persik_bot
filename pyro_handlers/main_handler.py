@@ -4,10 +4,7 @@ from config import (
     INTERVAL_MIN,
     PYRO_API_HASH,
     PYRO_API_ID,
-    TARGET_CHANNEL_ID,
     TARGET_CHAT_ID,
-    MODEL_DESTINATION_5,
-    VECT_DESTINATION_5,
 )
 from database.models import Badphrases
 from database.engine import session_maker
@@ -15,7 +12,6 @@ from sqlalchemy import select
 import pandas as pd
 
 from utils.unidecoder import unidecoder
-from utils.spamcheckerv5.spamchecker import spamchecker5
 from utils.spamchecker_api.lols_bot_api import api_spam_check
 
 import re
@@ -281,21 +277,6 @@ async def pyro_main_handler(app, message):
         return
 
     if message_text:
-        spam_checkv5 = await spamchecker5(message_text)
-        if spam_checkv5 == 1:
-            await app.send_message(
-                chat_id=CHAT_ID_MODERATORS,
-                text="обнаружен спам с помощью алгоритма Feodor Cherepakhin",
-            )
-            await message.forward(chat_id=CHAT_ID_MODERATORS)
-
-            try:
-                await message.delete()
-            except Exception as e:
-                logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
-            return
-
-
         found_phrase = await full_phrase_analyse(message_text, bad_words)
         if found_phrase:
             await app.send_message(
@@ -311,20 +292,6 @@ async def pyro_main_handler(app, message):
             return
 
     if message_caption:
-        spam_checkv5 = await spamchecker5(message_caption)
-        if spam_checkv5 == 1:
-            await app.send_message(
-                chat_id=CHAT_ID_MODERATORS,
-                text="обнаружен спам с помощью алгоритма Feodor Cherepakhin",
-            )
-            await message.forward(chat_id=CHAT_ID_MODERATORS)
-
-            try:
-                await message.delete()
-            except Exception as e:
-                logging.error(f"Ошибка при удалении сообщения со спамом: {e}")
-
-            return
 
 
         found_phrase = await full_phrase_analyse(message_caption, bad_words)
