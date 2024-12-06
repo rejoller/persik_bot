@@ -175,7 +175,15 @@ async def pyro_main_handler(app, message):
     
     for name in bad_names:
         if name in message.from_user.first_name.lower():
-            await message.delete()
+            await app.send_message(
+                    chat_id=CHAT_ID_MODERATORS,
+                    text="Плохое имя пользователя, удаляю сообщение😐")
+            await message.forward(chat_id=CHAT_ID_MODERATORS)
+            try:
+                await message.delete()
+            except Exception as e:
+                logging.error(f"Ошибка при удалении сообщения: {e}")
+            return
     
     
     if message.from_user.id:
