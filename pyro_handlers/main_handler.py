@@ -24,6 +24,7 @@ from pyrogram import filters
 import asyncio
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from icecream import ic
+from bad_names import bad_names
 
 
 def stem_words(words):
@@ -165,17 +166,16 @@ async def check_message_for_bad_words(message_words, bad_words, threshold=70):
             return True
     return False
 
-bad_names = ['школьниц', 'вла']
+
 
 async def pyro_main_handler(app, message):
     user_id = ''
     message_text = ''
     message_caption = ''
     
-    ic(message.from_user.first_name)
     for name in bad_names:
-        if name in message.from_user.first_name:
-            logging.info(f'плохое имя {message.from_user.first_name}')
+        if name in message.from_user.first_name.lower():
+            await message.delete()
     
     
     if message.from_user.id:
